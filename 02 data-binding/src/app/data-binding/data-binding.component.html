@@ -1,0 +1,95 @@
+<!--
+    <section>
+
+   <article>
+    <h3>Interpolation / Interpolação</h3>
+    <p>String renderizada com interpoção: {{ url }}</p>
+    <p>Resultado de 1 + 1 é : {{ 1 + 1 }}</p>
+    <p>Resultado de 1 + 1 não é : {{ 1 + 1 + getValor() }}</p>
+    <p>Curso Angular: {{ cursoAngular && getCurtirCurso() }}</p>
+  </article>
+
+  <article>
+    <h3>Property Binding</h3>
+    <img src="{{ urlImg }}">
+    <hr />
+    <img [src]="urlImg">
+    <hr />
+    <img bind-src="urlImg">
+  </article>
+
+  <article>
+    <h3>Class e style Binding</h3>
+    <div>
+      Selecione uma classe:
+      <select #classe (change)="0">
+        <option value="alert-success">Sucesso</option>
+        <option value="alert-info">Info</option>
+        <option value="alert-warning">Aviso</option>
+        <option value="alert-danger">Erro</option>
+      </select>
+
+      <br>
+      <br>
+      <hr>
+      <div class="alert {{ classe.value }}">Texto com a cor segundo combobox</div>
+      <br>
+      <br>
+      <hr>
+
+      <div class="alert" [class.alert-success]="classe.value == 'alert-success'">
+        Success!
+      </div>
+
+      <div class="alert" [class.alert-info]="classe.value == 'alert-info'">
+        Info!
+      </div>
+
+      <div class="alert" [class.alert-warning]="classe.value == 'alert-warning'">
+        Warning!
+      </div>
+
+      <div class="alert" [class.alert-danger]="classe.value == 'alert-danger'">
+        Danger!
+      </div>
+      <hr>
+      <strong>Só mostra caso selecionar o erro no comboboc acima</strong>
+      <div class="alert alert-danger" [style.display]="classe.value == 'alert-danger' ? 'block' :'none'">
+        Erro foi selecionado no combobox
+      </div>
+    </div>
+  </article>
+
+</section>
+
+<section class="event-binding">
+  <article>
+    <h3>Event binding</h3>
+    <div>
+      <button (click)="botaoClicado('cat')" class="btn btn-primary">
+        Click Me
+      </button>
+      <br>
+      <hr>
+      <input type="text" (keyup)="onKeyUp($event)" (keyup.enter)="salvarValor(campoInput.value)"
+        (blur)="salvarValor(campoInput.value)" #campoInput />
+      <p>Valor Atual: {{ valorAtual }}</p>
+      <p>Valor Salvo: {{ valorSalvo }}</p>
+    </div>
+    <br>
+    <hr>
+    <span
+    (mouseover)="onMouseOver()"
+    (mouseout)="onMouseOver()"
+    [class.highlight] ="isMouseOver"
+    >{{ isMouseOver ? 'O mouse está sobre o texto' : 'O mouse não está sobre o texto' }}</span>
+  </article>
+</section>
+ -->
+<!-- <app-meu-form></app-meu-form> -->
+<section>
+  <article>
+    <h3>Input/Output Property</h3>
+    <app-curso [nome]="nomeDoCurso"></app-curso>
+  </article>
+</section>

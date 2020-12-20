@@ -1,0 +1,17 @@
+<section>
+  <article>
+    <h3>Two-way data bindind</h3>
+    <div>
+      <input type="text" [value]="nome" (input)="nome = $event.target.value" />
+      <input type="text" [ngModel]="nome" (ngModelChange)="nome = $event" />
+      <input type="text" [(ngModel)]="nome" /><!-- [()] => Caixa de Banana ou Banana Box -->
+      <input type="text" bindon-ngModel="nome" />
+            <p>Você digitou: {{ nome }}</p>
+    </div>
+    <div>
+      <input type="text" [(ngModel)]="pessoa.nome" /><!-- [()] => Caixa de Banana ou Banana Box -->
+      <input type="text" [(ngModel)]="pessoa.idade" /><!-- [()] => Caixa de Banana ou Banana Box -->
+      <p>Nome: {{pessoa.nome}}, Idade: {{pessoa.idade}}</p>
+    </div>
+  </article>
+</section>
