@@ -21,7 +21,7 @@ Nesse repositório será armazenado tudo que eu desenvolver durante o curso da L
 ## :sparkles: Feito
   
 - [x] Introdução
-- [ ] Data binding
+- [x] Data binding
 - [ ] Angular CLI
 - [ ] Diretivas
 - [ ] Serviços
