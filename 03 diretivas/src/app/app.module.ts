@@ -7,12 +7,14 @@ import { DiretivaNgswitchComponent } from './diretiva-ngswitch/diretiva-ngswitch
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { DiretivaNgforComponent } from './diretiva-ngfor/diretiva-ngfor.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DiretivaNgifComponent,
-    DiretivaNgswitchComponent
+    DiretivaNgswitchComponent,
+    DiretivaNgforComponent
   ],
   imports: [
     BrowserModule,
