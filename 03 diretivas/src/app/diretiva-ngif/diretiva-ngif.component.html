@@ -10,3 +10,21 @@
 <button (click)="controleCurso()">Mostar ou esconder cursos</button>
 <div [hidden]="!mostrarCursos">Verdadeiro</div>
 <div [hidden]="mostrarCursos">Falso</div>
+
+<hr>
+
+<h4>O segredo do * é o ng-template</h4>
+
+<!-- <div *ngIf="mostrarCursos">
+  Lista de cursos:
+</div> -->
+
+<ng-template [ngIf]="mostrarCursos">
+  <div>Lista de cursos 1</div>
+</ng-template>
+<hr>
+<span>
+  Aparentemente esta quebrado na versão 11
+</span>
+<div ng-template="ngIf mostrarCursos">Lista de cursos 2</div>
+<div template="ngIf mostrarCursos">Lista de cursos 3</div>

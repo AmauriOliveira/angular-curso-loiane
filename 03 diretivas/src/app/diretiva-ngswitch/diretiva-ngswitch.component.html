@@ -25,11 +25,27 @@
     </ul>
   </div>
 </nav>
+
 <div class="container" [ngSwitch]="aba">
   <p *ngSwitchCase="'mapa'">Modo Mapa Ativado</p>
   <p *ngSwitchCase="'lista'">Modo Lista Ativado</p>
   <p *ngSwitchDefault>Modo Home Ativado</p>
 </div>
+
+<h4>Segredo do * no ngSwitch</h4>
+
+<div class="container" [ngSwitch]="aba">
+  <ng-template [ngSwitchCase]="'mapa'">
+    <p>Modo Mapa Ativado</p>
+  </ng-template>
+  <ng-template [ngSwitchCase]="'lista'">
+    <p>Modo Lista Ativado</p>
+  </ng-template>
+  <ng-template [ngSwitchCase]="'home'" ngSwitchDefault>
+    <p>Modo Home Ativado</p>
+  </ng-template>
+</div>
+
 <!--
 <div class="card">
   <div class="card-header">
