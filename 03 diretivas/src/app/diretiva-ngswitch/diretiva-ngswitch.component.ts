@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 @Component({
   selector: 'app-diretiva-ngswitch',
   templateUrl: './diretiva-ngswitch.component.html',
@@ -7,9 +6,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DiretivaNgswitchComponent implements OnInit {
 
+  aba: string = 'home';
+
   constructor() { }
 
   ngOnInit(): void {
   }
-
+// https://youtu.be/uToE2t9RHME?t=279
 }

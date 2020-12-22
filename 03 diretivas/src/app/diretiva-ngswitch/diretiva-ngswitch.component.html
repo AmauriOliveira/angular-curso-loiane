@@ -1,1 +1,55 @@
-<p>diretiva-ngswitch works!</p>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <a class="nav-link nav-item" [class.active]="aba =='home'" (click)="aba = 'home'">
+        Home
+      </a>
+      <a class=" nav-link nav-item" [class.active]="aba =='mapa'" (click)="aba = 'mapa'">
+        Mapa
+      </a>
+      <a class="nav-link nav-item" [class.active]="aba =='lista'" (click)="aba = 'lista'">
+        Lista
+      </a>
+      <!-- <li class="nav-item active">
+        <a class="nav-link">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">Pricing</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li> -->
+    </ul>
+  </div>
+</nav>
+<div class="container" [ngSwitch]="aba">
+  <p *ngSwitchCase="'mapa'">Modo Mapa Ativado</p>
+  <p *ngSwitchCase="'lista'">Modo Lista Ativado</p>
+  <p *ngSwitchDefault>Modo Home Ativado</p>
+</div>
+<!--
+<div class="card">
+  <div class="card-header">
+    Featured
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+
+<carousel>
+  <slide>
+    <img src="assets/images/nature/1.jpg" alt="first slide" style="display: block; width: 100%;">
+  </slide>
+  <slide>
+    <img src="assets/images/nature/2.jpg" alt="second slide" style="display: block; width: 100%;">
+  </slide>
+  <slide>
+    <img src="assets/images/nature/3.jpg" alt="third slide" style="display: block; width: 100%;">
+  </slide>
+</carousel> -->
