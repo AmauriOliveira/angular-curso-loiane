@@ -12,6 +12,28 @@
 
 <p [highlight]="'red'" [defaultColor]="'gray'">
   texto com High Light ao passar o mouse Mouse
-</p >
+</p>
+<hr>
 
+<h5>Diretiva Estrutura Customizada - ngElse</h5>
 
+<div *ngIf="mostrarCursos">
+  Lista de cursos:
+</div>
+<div *ngElse="mostrarCursos">
+  Não existem cursos nessa categoria
+</div>
+<hr><br>
+<button (click)="controleCurso()">Mostar ou esconder cursos</button>
+<hr>
+
+<div [hidden]="!mostrarCursos">Verdadeiro</div>
+<div [hidden]="mostrarCursos">Falso</div>
+<hr>
+
+<ng-template [ngIf]="mostrarCursos">
+  <div>Lista de cursos 1</div>
+</ng-template>
+<ng-template [ngElse]="mostrarCursos">
+  <div>Não existem cursos nessa categoria 1</div>
+</ng-template>

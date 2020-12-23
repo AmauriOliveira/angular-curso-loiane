@@ -23,7 +23,7 @@ Nesse repositório será armazenado tudo que eu desenvolver durante o curso da L
 - [x] Introdução
 - [x] Data binding
 - [X] Angular CLI
-- [ ] Diretivas
+- [X] Diretivas
 - [ ] Serviços
 - [ ] Pipes / Filtros
 - [ ] Rotas
