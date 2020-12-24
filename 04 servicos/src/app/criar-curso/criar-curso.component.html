@@ -1,0 +1,11 @@
+<h5>Compartilhar serviços entre componente</h5>
+
+<input type="text" #cursoInput>
+<br>
+<button (click)="onAddCurso(cursoInput.value)">Add Curso</button>
+
+<ul>
+  <li *ngFor="let curso of cursos">{{ curso }}</li>
+</ul>
+
+<app-receber-curso-criado></app-receber-curso-criado>
