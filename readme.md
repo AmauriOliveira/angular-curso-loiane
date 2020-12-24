@@ -24,7 +24,7 @@ Nesse repositório será armazenado tudo que eu desenvolver durante o curso da L
 - [x] Data binding
 - [X] Angular CLI
 - [X] Diretivas
-- [ ] Serviços
+- [X] Serviços
 - [ ] Pipes / Filtros
 - [ ] Rotas
 - [ ] Formulários / Template Driven
