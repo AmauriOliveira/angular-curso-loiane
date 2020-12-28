@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 interface Book {
   title: string;
@@ -26,9 +26,17 @@ export class ExemplosPipesComponent implements OnInit {
     url: 'https://www.amazon.com.br/dp/8543104785/ref=cm_sw_em_r_mt_dp_7XD6FbPH9GPYG'
   };
 
+  livros: string[] = ['Java', 'Angular 2'];
+
+  filtro: string;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  addCurso(nomeCurso: string) {
+    this.livros.push(nomeCurso);
   }
 
 }
