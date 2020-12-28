@@ -1,0 +1,10 @@
+<h5>Exemplos de Pipes</h5>
+<!-- Pipes aninhados o ultimo sobrescreve os progenitores -->
+<p>Título: {{ book.title | uppercase }}</p>
+<p>Estrela: {{ book.rating | number:'1.1-1' }}</p>
+<p>Páginas: {{ book.page | number }}</p>
+<p>Preço: {{ book.price | currency:'BRL':true }}</p>
+<p>Data: {{ book.date | date:'dd/MMM/yyyy' | lowercase }}</p>
+<p>URL: {{ book.url }}</p>
+<br>
+<p>Livro: {{ book | json }}</p>
