@@ -9,7 +9,8 @@ import { SettingsService } from './settings.service';
 
 import ptBr from '@angular/common/locales/pt'; // necessário a partir do Angular v5
 import { registerLocaleData } from '@angular/common';
-import { FiltroArrayPipe } from './filtro-array.pipe'; // necessário a partir do Angular v5
+import { FiltroArrayPipe } from './filtro-array.pipe';
+import { FiltroArrayImpuroPipe } from './filtro-array-impuro.pipe'; // necessário a partir do Angular v5
 registerLocaleData(ptBr); // necessário a partir do Angular v5
 
 @NgModule({
@@ -18,6 +19,7 @@ registerLocaleData(ptBr); // necessário a partir do Angular v5
     ExemplosPipesComponent,
     CamelCasePipe,
     FiltroArrayPipe,
+    FiltroArrayImpuroPipe,
   ],
   imports: [
     BrowserModule,
