@@ -11,11 +11,19 @@
         <li class="nav-item">
           <a routerLinkActive="active" class="nav-link" routerLink="/cursos">Cursos</a>
         </li>
+        <li class="nav-item">
+          <a routerLinkActive="active" class="nav-link" [routerLink]="['curso', idCurso.value]">Cursos com ID</a>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
 
-
-
-<router-outlet></router-outlet>
+<div class="container">
+  <br>
+  <p>Entre com o ID do curso</p><br>
+  <input #idCurso>
+  <p>Id: {{ idCurso.value }}</p>
+  <hr>
+  <router-outlet></router-outlet>
+</div>
