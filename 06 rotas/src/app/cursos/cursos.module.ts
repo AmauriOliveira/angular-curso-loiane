@@ -5,18 +5,19 @@ import { CursosComponent } from './cursos.component';
 import { CursoNotFoundComponent } from './curso-not-found/curso-not-found.component'
 import { CursoDetalheComponent } from './curso-detalhe/curso-detalhe.component';
 import { CursosService } from './cursos.service';
-import { cursosRoutingModule } from "./cursos.routing.module";
+import { CursosRoutingModule } from "./cursos.routing.module";
 
 @NgModule({
   imports: [
     CommonModule,
-    cursosRoutingModule
+    CursosRoutingModule
   ],
   exports: [],
   declarations: [
     CursosComponent,
     CursoDetalheComponent,
-    CursoNotFoundComponent,]
+    CursoNotFoundComponent,
+  ]
   ,
   providers: [CursosService],
 })

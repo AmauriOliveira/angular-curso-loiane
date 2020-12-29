@@ -38,3 +38,20 @@ ng n <name> [options]
 | --style | The file extension or preprocessor to use for style files. | css/scss/sass/less/styl |  |
 | --verbose | Add more details to output logging. Aliases: -v | boolean | false |
 | --view-encapsulation | The view encapsulation strategy to use in the initial project. | Emulated/Native/None/ShadowDom |   |
+
+
+## ng g c
+
+>Error: More than one module matches. Use the skip-import option to skip importing the component into the closest module or use the module option to specify a module.
+
+use
+
+```bash
+ng g c new-component --module app
+```
+
+or
+
+```bash
+ng g c component-name --module ../
+```

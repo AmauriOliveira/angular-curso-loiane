@@ -16,4 +16,4 @@ const cursosRoutes: Routes = [
   imports: [RouterModule.forChild(cursosRoutes)],
   exports: [RouterModule]
 })
-export class cursosRoutingModule { }
+export class CursosRoutingModule { }
