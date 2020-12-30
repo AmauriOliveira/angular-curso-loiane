@@ -29,7 +29,7 @@ export class CursoDetalheComponent implements OnInit {
       this.curso = this.cursosService.getCurso(this.id)
       // caso o curso for vazio ele redireciona
       if (!this.curso) {
-        this.router.navigate(['/not_found']);
+        this.router.navigate(['/cursos/not_found']);
       }
     });
   }
