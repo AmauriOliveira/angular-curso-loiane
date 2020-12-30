@@ -8,6 +8,8 @@ import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './app.routing.module';
 import { AuthService } from './login/auth.service';
 import { AuthGuard } from './guards/auth.guard';
+import { CursosGuard } from './guards/curso.guard';
+import { AlunosGuard } from './guards/aluno.guard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +24,8 @@ import { AuthGuard } from './guards/auth.guard';
   providers: [
     AuthService,
     AuthGuard,
+    CursosGuard,
+    AlunosGuard,
   ],
   bootstrap: [AppComponent]
 })
