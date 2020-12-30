@@ -1,1 +1,13 @@
-<p>aluno-detalhe works!</p>
+<div class="container">
+  <p>Detalhes do aluno:</p>
+  <div class="card">
+    <div class="card-header border-danger bg-primary text-white">
+      {{ aluno?.nome }}
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Id: {{ aluno?.id }}</li>
+      <li class="list-group-item">Email: {{ aluno?.email }}</li>
+       <a (click)="editarContato()" class="btn btn-primary">Editar</a>
+    </ul>
+  </div>
+</div>

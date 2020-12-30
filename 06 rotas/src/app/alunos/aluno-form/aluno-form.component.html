@@ -1,1 +1,16 @@
-<p>aluno-form works!</p>
+<div class="container">
+  <p>Criar ou editar</p>
+  <div class="card">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <input disabled [(ngModel)]="aluno.id" placeholder="ID" type="text">
+      </li>
+      <li class="list-group-item">
+        <input [(ngModel)]="aluno.nome" placeholder="Nome" type="text">
+      </li>
+      <li class="list-group-item">
+        <input [(ngModel)]="aluno.email" placeholder="E-mail" type="email">
+      </li>
+    </ul>
+  </div>
+</div>
