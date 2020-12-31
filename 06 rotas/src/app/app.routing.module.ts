@@ -7,6 +7,7 @@ import { CursosGuard } from "./guards/curso.guard";
 
 import { HomeComponent } from "./home/home.component";
 import { LoginComponent } from "./login/login.component";
+import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 
 const appRoutes: Routes = [
   {
@@ -21,6 +22,8 @@ const appRoutes: Routes = [
   },
   { path: 'login', component: LoginComponent },
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  /* { path: '', redirectTo: '/home', pathMatch: 'full' }, */ //exemplo de redirecionamento
+  { path: '**', component: PageNotFoundComponent, /*canActivate: [AuthGuard]*/ },//se ativar o canActivate tu força ele ir para o login ao errar uma pagina
 ];
 
 @NgModule({
