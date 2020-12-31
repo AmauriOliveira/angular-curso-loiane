@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { IFormDesativar } from 'src/app/guards/Iform-desativar.guard';
-import { AlunosService, Aluno } from '../alunos.service';
+import { IFormDesativar  } from '../../guards/iform-desativar.guard';
+import { AlunosService } from '../alunos.service';
 
 @Component({
   selector: 'app-aluno-form',

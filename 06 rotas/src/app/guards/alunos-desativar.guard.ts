@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanDeactivate, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 
-import { IFormDesativar } from './Iform-desativar.guard';
+import { IFormDesativar } from './iform-desativar.guard';
 
 // Consider using this interface for all CanDeactivate guards,
 // and have your components implement this interface, too.
