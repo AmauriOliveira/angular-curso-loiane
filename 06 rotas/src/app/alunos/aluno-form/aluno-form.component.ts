@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { IFormDesativar } from 'src/app/guards/Iform-desativar.guard';
 import { AlunosService, Aluno } from '../alunos.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { AlunosService, Aluno } from '../alunos.service';
   templateUrl: './aluno-form.component.html',
   styleUrls: ['./aluno-form.component.scss']
 })
-export class AlunoFormComponent implements OnInit {
+export class AlunoFormComponent implements OnInit, IFormDesativar {
 
   aluno: any;
   inscricao: Subscription = new Subscription();
@@ -41,7 +42,6 @@ export class AlunoFormComponent implements OnInit {
   getCanChangeRoute(): boolean {
     if (this.formEdit) {
       confirm('Tem certeza  que deseja sair sem salvar');
-      return false;
     }
     return true;
   }
