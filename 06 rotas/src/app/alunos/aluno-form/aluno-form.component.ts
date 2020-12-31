@@ -12,12 +12,16 @@ import { AlunosService, Aluno } from '../alunos.service';
 export class AlunoFormComponent implements OnInit {
 
   aluno: any;
-  inscricao: Subscription;
+  inscricao: Subscription = new Subscription();
+  private formEdit: boolean = false;
+
 
   constructor(
     private route: ActivatedRoute,
     private alunosService: AlunosService
-  ) {
+  ) { }
+
+  ngOnInit(): void {
     this.inscricao = this.route.params.subscribe(
       (params: any) => {
         let id = params['id'];
@@ -30,8 +34,18 @@ export class AlunoFormComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {
+  onInputEdit() {
+    this.formEdit = true;
   }
+
+  getCanChangeRoute(): boolean {
+    if (this.formEdit) {
+      confirm('Tem certeza  que deseja sair sem salvar');
+      return false;
+    }
+    return true;
+  }
+
 
   ngOnDestroy() {
     this.inscricao.unsubscribe();
