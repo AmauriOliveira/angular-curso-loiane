@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, NgModel } from '@angular/forms';
 
 interface User {
   nome: string | null;
@@ -47,5 +47,11 @@ export class TemplateFormComponent implements OnInit {
     console.log(this.usuario);
     console.log('====================================');
 
+  }
+
+  aplicaCssErro(campo: NgModel) {
+    return {
+      'is-invalid': !campo.valid && campo.touched,
+    }
   }
 }

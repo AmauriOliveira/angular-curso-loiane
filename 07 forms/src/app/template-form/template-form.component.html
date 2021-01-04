@@ -4,13 +4,11 @@
       <div class="acol-sm-12">
         <label for="nome" class="form-label">Nome:</label>
         <input name="nome" [(ngModel)]="usuario.nome" type="text" class="form-control" id="nome" placeholder="Nome"
-          required #nome="ngModel" [class.is-invalid]="!nome.valid && nome.touched">
+          required #nome="ngModel" [ngClass]="aplicaCssErro(nome)">
         <!-- <div>
         {{ nome.className }}
       </div> -->
-        <div class="alert alert-danger invalid-feedback" role="alert">
-          Nome é obrigatório
-        </div>
+        <div class="alert alert-danger invalid-feedback" role="alert">Nome é obrigatório</div>
       </div>
     </div>
 
@@ -18,11 +16,8 @@
       <div class="col-sm-12">
         <label for="email" class="form-label">E-mail:</label>
         <input name="email" [(ngModel)]="usuario.email" type="email" class="form-control" id="email"
-          placeholder="name@example.com" required email #email="ngModel"
-          [class.is-invalid]="!email.valid && email.touched">
-        <div class="alert alert-danger invalid-feedback" role="alert">
-          E-mail é obrigatório
-        </div>
+          placeholder="name@example.com" required email #email="ngModel" [ngClass]="aplicaCssErro(email)">
+        <div class="alert alert-danger invalid-feedback" role="alert">E-mail é obrigatório</div>
       </div>
     </div>
 
@@ -32,19 +27,15 @@
         <div class="col-sm-3">
           <label for="cep" class="form-label">CEP:</label>
           <input name="cep" [(ngModel)]="usuario.endereco.cep" type="text" class="form-control" id="cep"
-            placeholder="00000-000" required #cep="ngModel" [class.is-invalid]="!cep.valid && cep.touched">
-          <div class="alert alert-danger invalid-feedback" role="alert">
-            CEP é obrigatório
-          </div>
+            placeholder="00000-000" required #cep="ngModel" [ngClass]="aplicaCssErro(cep)">
+          <div class="alert alert-danger invalid-feedback" role="alert">CEP é obrigatório</div>
         </div>
 
         <div class="col-sm-3">
           <label for="numero" class="form-label">Número:</label>
           <input name="numero" [(ngModel)]="usuario.endereco.numero" type="number" class="form-control" id="numero"
-            placeholder="0" required #numero="ngModel" [class.is-invalid]="!numero.valid && numero.touched">
-          <div class="alert alert-danger invalid-feedback" role="alert">
-            Número é obrigatório
-          </div>
+            placeholder="0" required #numero="ngModel" [ngClass]="aplicaCssErro(numero)">
+          <div class="alert alert-danger invalid-feedback" role="alert">Número é obrigatório</div>
         </div>
 
         <div class="col-sm-6">
@@ -60,10 +51,8 @@
       <div class="acol-sm-12">
         <label for="rua" class="form-label">Rua:</label>
         <input name="rua" [(ngModel)]="usuario.endereco.rua" type="text" class="form-control" id="rua" required
-          #rua="ngModel" [class.is-invalid]="!rua.valid && rua.touched">
-        <div class="alert alert-danger invalid-feedback" role="alert">
-          Rua é obrigatório
-        </div>
+          #rua="ngModel" [ngClass]="aplicaCssErro(rua)">
+        <div class="alert alert-danger invalid-feedback" role="alert">Rua é obrigatória</div>
       </div>
     </div>
 
@@ -73,28 +62,22 @@
         <div class="col-sm-5">
           <label for="bairro" class="form-label">Bairro:</label>
           <input name="bairro" [(ngModel)]="usuario.endereco.bairro" type="text" class="form-control" id="bairro"
-            required #bairro="ngModel" [class.is-invalid]="!bairro.valid && bairro.touched">
-          <div class="alert alert-danger invalid-feedback" role="alert">
-            Bairro é obrigatório
-          </div>
+            required #bairro="ngModel" [ngClass]="aplicaCssErro(bairro)">
+          <div class="alert alert-danger invalid-feedback" role="alert">Birro é obrigatório</div>
         </div>
 
         <div class="col-sm-4">
           <label for="cidade" class="form-label">Cidade:</label>
           <input name="cidade" [(ngModel)]="usuario.endereco.cidade" type="text" class="form-control" id="cidade"
-            required #cidade="ngModel" [class.is-invalid]="!cidade.valid && cidade.touched">
-          <div class="alert alert-danger invalid-feedback" role="alert">
-            Cidade é obrigatório
-          </div>
+            required #cidade="ngModel" [ngClass]="aplicaCssErro(cidade)">
+          <div class="alert alert-danger invalid-feedback" role="alert">Cidade é obrigatória</div>
         </div>
 
         <div class="col-sm-3">
           <label for="estado" class="form-label">Estado:</label>
           <input name="estado" [(ngModel)]="usuario.endereco.estado" type="text" class="form-control" id="estado"
-            required #estado="ngModel" [class.is-invalid]="!estado.valid && estado.touched">
-          <div class="alert alert-danger invalid-feedback" role="alert">
-            Estado é obrigatório
-          </div>
+            required #estado="ngModel" [ngClass]="aplicaCssErro(estado)">
+          <div class="alert alert-danger invalid-feedback" role="alert">Estado é obrigatório</div>
         </div>
 
       </div>
