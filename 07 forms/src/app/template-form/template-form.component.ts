@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 interface User {
-  nome: string;
-  email: string;
+  nome: string | null;
+  email: string | null;
 }
 
 @Component({
@@ -14,8 +14,8 @@ interface User {
 export class TemplateFormComponent implements OnInit {
 
   usuario: User = {
-    nome: 'Amauri',
-    email: 'amauri@hotmail.com',
+    nome: null,
+    email: null,
   }
   constructor() { }
 
