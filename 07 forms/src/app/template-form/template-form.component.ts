@@ -4,6 +4,15 @@ import { NgForm } from '@angular/forms';
 interface User {
   nome: string | null;
   email: string | null;
+  endereco: {
+    cep: string | null;
+    numero: number | null;
+    complemento?: string | null;
+    rua: string | null;
+    bairro: string | null;
+    cidade: string | null;
+    estado: string | null;
+  }
 }
 
 @Component({
@@ -16,6 +25,15 @@ export class TemplateFormComponent implements OnInit {
   usuario: User = {
     nome: null,
     email: null,
+    endereco: {
+      cep: null,
+      numero: 0,
+      complemento: null,
+      rua: null,
+      bairro: null,
+      cidade: null,
+      estado: null,
+    }
   }
   constructor() { }
 

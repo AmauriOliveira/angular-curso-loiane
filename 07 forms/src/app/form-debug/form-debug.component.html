@@ -1,14 +1,16 @@
-<div class="detalhe-form" *ngIf="form" >
-  <div>
+<div class="detalhe-form card" *ngIf="form">
+  <div class="card-header">
     Detalhes do form
   </div>
-  <pre>
-    Form válido: {{ form.valid }}
-  </pre>
-  <pre>
-    Form submetido: {{ form.submitted }}
-  </pre>
-  <pre>
-    Valores: <br> {{ form.value | json }}
-  </pre>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      Form válido: <strong>{{ form.valid }}</strong>
+    </li>
+    <li class="list-group-item">
+      Form submetido: <strong>{{ form.submitted }}</strong>
+    </li>
+    <li class="list-group-item">
+      Valores: <br> <strong>{{ form.value | json }}</strong>
+    </li>
+  </ul>
 </div>
