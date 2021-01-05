@@ -12,6 +12,13 @@ export class DataFormComponent implements OnInit {
   formulario = this.formBuilder.group({
     nome: ['', [Validators.required, /* Validators.minLength(3),Validators.maxLength(25),*/],],//aqui vai a string que server de valor inicial
     email: ['', [Validators.required, Validators.email],],
+    cep: ['', [Validators.required,],],
+    logradouro: ['', [Validators.required,],],
+    complemento: ['',],
+    numero: ['', [Validators.required,],],
+    bairro: ['', [Validators.required,],],
+    localidade: ['', [Validators.required,],],
+    uf: ['', [Validators.required,],],
   });
 
   constructor(
@@ -45,4 +52,19 @@ export class DataFormComponent implements OnInit {
     //limpa o form
     this.formulario.reset();
   }
+
+  aplicaCssErro(nomeCampo: string) {
+
+    return {
+      'is-invalid': !this.formulario.get(nomeCampo)!.valid && this.formulario.get(nomeCampo)!.touched,
+    }
+  }
+
+  vereficaEmailInvalido() {
+    let campoEmail = this.formulario.get('email');
+    if (campoEmail?.errors) {
+      return campoEmail.errors['email'] && campoEmail.touched;
+    }
+  }
+
 }
