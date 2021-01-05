@@ -1,1 +1,82 @@
-<p>data-form works!</p>
+<div class="container">
+  <form class="row g-3" [formGroup]="formulario">
+    <div class="form-group">
+      <div class="acol-sm-12">
+        <label for="nome" class="form-label">Nome:</label>
+        <input formControlName="nome" type="text" class="form-control" id="nome" placeholder="Nome">
+        <div class="alert alert-danger invalid-feedback" role="alert">Nome é obrigatório</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-12">
+        <label for="email" class="form-label">E-mail:</label>
+        <input formControlName="email" type="email" class="form-control" id="email" placeholder="name@example.com"
+          email>
+        <div class="alert alert-danger invalid-feedback" role="alert">E-mail é obrigatório</div>
+      </div>
+    </div>
+
+    <!--     <div ngModelGroup="endereco">
+      <div class="form-group">
+
+        <div class="row">
+          <div class="col-sm-3">
+            <label for="cep" class="form-label">CEP:</label>
+            <input formControlName="cep" type=" text" class="form-control" id="cep" placeholder="00000-000">
+            <div class="alert alert-danger invalid-feedback" role="alert">CEP é obrigatório</div>
+          </div>
+
+          <div class="col-sm-3">
+            <label for="numero" class="form-label">Número:</label>
+            <input formControlName="numero" type=" number" class="form-control" id="numero" placeholder="0">
+            <div class="alert alert-danger invalid-feedback" role="alert">Número é obrigatório</div>
+          </div>
+
+          <div class="col-sm-6">
+            <label for="complemento" class="form-label">Complemento:</label>
+            <input formControlName="complemento" type=" text" class="form-control" id="complemento" placeholder="Complemento">
+          </div>
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <div class="acol-sm-12">
+          <label for="logradouro" class="form-label">Rua:</label>
+          <input formControlName="logradouro" type=" text" class="form-control" id="logradouro">
+          <div class="alert alert-danger invalid-feedback" role="alert">Rua é obrigatória</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+
+          <div class="col-sm-5">
+            <label for="bairro" class="form-label">Bairro:</label>
+            <input formControlName="bairro" type=" text" class="form-control" id="bairro">
+            <div class="alert alert-danger invalid-feedback" role="alert">Birro é obrigatório</div>
+          </div>
+
+          <div class="col-sm-4">
+            <label for="localidade" class="form-label">Cidade:</label>
+            <input formControlName="localidade" type=" text" class="form-control" id="localidade">
+            <div class="alert alert-danger invalid-feedback" role="alert">Cidade é obrigatória</div>
+          </div>
+
+          <div class="col-sm-3">
+            <label for="uf" class="form-label">UF:</label>
+            <input formControlName="uf" type=" text" class="form-control" id="uf">
+            <div class="alert alert-danger invalid-feedback" role="alert">UF é obrigatório</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="form-group col-sm-12">
+      <button type="submit" class="btn btn-primary">Enviar</button>
+    </div> -->
+    <app-form-debug [form]="formulario"> </app-form-debug>
+  </form>
+</div>
