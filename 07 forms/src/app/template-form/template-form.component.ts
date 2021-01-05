@@ -1,18 +1,20 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm, NgModel } from '@angular/forms';
 
 interface User {
   nome: string | null;
   email: string | null;
-  endereco: {
-    cep: string | null;
-    numero: number | null;
-    complemento?: string | null;
-    rua: string | null;
-    bairro: string | null;
-    cidade: string | null;
-    estado: string | null;
-  }
+  endereco: Endereco;
+}
+interface Endereco {
+  cep: string | null;
+  logradouro: string | null;
+  complemento?: string | null;
+  numero?: number | null;
+  bairro: string | null;
+  localidade: string | null;
+  uf: string | null;
 }
 
 @Component({
@@ -29,13 +31,13 @@ export class TemplateFormComponent implements OnInit {
       cep: null,
       numero: 0,
       complemento: null,
-      rua: null,
+      logradouro: null,
       bairro: null,
-      cidade: null,
-      estado: null,
+      localidade: null,
+      uf: null,
     }
   }
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
   }
@@ -54,4 +56,29 @@ export class TemplateFormComponent implements OnInit {
       'is-invalid': !campo.valid && campo.touched,
     }
   }
+
+  consultaCEP(cep: string) {
+    //Nova variável "cep" somente com dígitos.
+    cep = cep.replace(/\D/g, '');
+    //Verifica se campo cep possui valor informado.
+    if (cep !== "") {
+      //Expressão regular para validar o CEP.
+      var validacep = /^[0-9]{8}$/;
+
+      //Valida o formato do CEP.
+      if (validacep.test(cep)) {
+
+        this.http.get(`https://viacep.com.br/ws/${cep}/json`)
+          .subscribe((data: any) => this.usuario.endereco = {
+            logradouro: data.logradouro,
+            cep: data.cep,
+            bairro: data.bairro,
+            localidade: data.localidade,
+            complemento: data.complemento,
+            uf: data.uf,
+          });
+      }
+    }
+  }
+
 }

@@ -1,9 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
 import { DataFormComponent } from './data-form/data-form.component';
 import { TemplateFormModule } from './template-form/template-form.module';
 
@@ -15,6 +16,7 @@ import { TemplateFormModule } from './template-form/template-form.module';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule ,
     AppRoutingModule,
     TemplateFormModule,
   ],

@@ -21,63 +21,66 @@
       </div>
     </div>
 
-    <div class="form-group">
+    <div ngModelGroup="endereco">
+      <div class="form-group">
 
-      <div class="row">
-        <div class="col-sm-3">
-          <label for="cep" class="form-label">CEP:</label>
-          <input name="cep" [(ngModel)]="usuario.endereco.cep" type="text" class="form-control" id="cep"
-            placeholder="00000-000" required #cep="ngModel" [ngClass]="aplicaCssErro(cep)">
-          <div class="alert alert-danger invalid-feedback" role="alert">CEP é obrigatório</div>
+        <div class="row">
+          <div class="col-sm-3">
+            <label for="cep" class="form-label">CEP:</label>
+            <input name="cep" [(ngModel)]="usuario.endereco.cep" type="text" class="form-control" id="cep"
+              placeholder="00000-000" required #cep="ngModel" [ngClass]="aplicaCssErro(cep)"
+              (blur)="consultaCEP(cep.value)">
+            <div class="alert alert-danger invalid-feedback" role="alert">CEP é obrigatório</div>
+          </div>
+
+          <div class="col-sm-3">
+            <label for="numero" class="form-label">Número:</label>
+            <input name="numero" [(ngModel)]="usuario.endereco.numero" type="number" class="form-control" id="numero"
+              placeholder="0" required #numero="ngModel" [ngClass]="aplicaCssErro(numero)">
+            <div class="alert alert-danger invalid-feedback" role="alert">Número é obrigatório</div>
+          </div>
+
+          <div class="col-sm-6">
+            <label for="complemento" class="form-label">Complemento:</label>
+            <input name="complemento" [(ngModel)]="usuario.endereco.complemento" type="text" class="form-control"
+              id="complemento" placeholder="Complemento" #complemento="ngModel">
+          </div>
         </div>
 
-        <div class="col-sm-3">
-          <label for="numero" class="form-label">Número:</label>
-          <input name="numero" [(ngModel)]="usuario.endereco.numero" type="number" class="form-control" id="numero"
-            placeholder="0" required #numero="ngModel" [ngClass]="aplicaCssErro(numero)">
-          <div class="alert alert-danger invalid-feedback" role="alert">Número é obrigatório</div>
-        </div>
+      </div>
 
-        <div class="col-sm-6">
-          <label for="complemento" class="form-label">Complemento:</label>
-          <input name="complemento" [(ngModel)]="usuario.endereco.complemento" type="text" class="form-control"
-            id="complemento" placeholder="Complemento" #complemento="ngModel">
+      <div class="form-group">
+        <div class="acol-sm-12">
+          <label for="logradouro" class="form-label">Rua:</label>
+          <input name="logradouro" [(ngModel)]="usuario.endereco.logradouro" type="text" class="form-control"
+            id="logradouro" required #logradouro="ngModel" [ngClass]="aplicaCssErro(logradouro)">
+          <div class="alert alert-danger invalid-feedback" role="alert">Rua é obrigatória</div>
         </div>
       </div>
 
-    </div>
+      <div class="form-group">
+        <div class="row">
 
-    <div class="form-group">
-      <div class="acol-sm-12">
-        <label for="rua" class="form-label">Rua:</label>
-        <input name="rua" [(ngModel)]="usuario.endereco.rua" type="text" class="form-control" id="rua" required
-          #rua="ngModel" [ngClass]="aplicaCssErro(rua)">
-        <div class="alert alert-danger invalid-feedback" role="alert">Rua é obrigatória</div>
-      </div>
-    </div>
+          <div class="col-sm-5">
+            <label for="bairro" class="form-label">Bairro:</label>
+            <input name="bairro" [(ngModel)]="usuario.endereco.bairro" type="text" class="form-control" id="bairro"
+              required #bairro="ngModel" [ngClass]="aplicaCssErro(bairro)">
+            <div class="alert alert-danger invalid-feedback" role="alert">Birro é obrigatório</div>
+          </div>
 
-    <div class="form-group">
-      <div class="row">
+          <div class="col-sm-4">
+            <label for="localidade" class="form-label">Cidade:</label>
+            <input name="localidade" [(ngModel)]="usuario.endereco.localidade" type="text" class="form-control"
+              id="localidade" required #localidade="ngModel" [ngClass]="aplicaCssErro(localidade)">
+            <div class="alert alert-danger invalid-feedback" role="alert">Cidade é obrigatória</div>
+          </div>
 
-        <div class="col-sm-5">
-          <label for="bairro" class="form-label">Bairro:</label>
-          <input name="bairro" [(ngModel)]="usuario.endereco.bairro" type="text" class="form-control" id="bairro"
-            required #bairro="ngModel" [ngClass]="aplicaCssErro(bairro)">
-          <div class="alert alert-danger invalid-feedback" role="alert">Birro é obrigatório</div>
-        </div>
-
-        <div class="col-sm-4">
-          <label for="cidade" class="form-label">Cidade:</label>
-          <input name="cidade" [(ngModel)]="usuario.endereco.cidade" type="text" class="form-control" id="cidade"
-            required #cidade="ngModel" [ngClass]="aplicaCssErro(cidade)">
-          <div class="alert alert-danger invalid-feedback" role="alert">Cidade é obrigatória</div>
-        </div>
-
-        <div class="col-sm-3">
-          <label for="estado" class="form-label">Estado:</label>
-          <input name="estado" [(ngModel)]="usuario.endereco.estado" type="text" class="form-control" id="estado"
-            required #estado="ngModel" [ngClass]="aplicaCssErro(estado)">
-          <div class="alert alert-danger invalid-feedback" role="alert">Estado é obrigatório</div>
+          <div class="col-sm-3">
+            <label for="uf" class="form-label">UF:</label>
+            <input name="uf" [(ngModel)]="usuario.endereco.uf" type="text" class="form-control" id="uf" required
+              #uf="ngModel" [ngClass]="aplicaCssErro(uf)">
+            <div class="alert alert-danger invalid-feedback" role="alert">UF é obrigatório</div>
+          </div>
         </div>
 
       </div>
