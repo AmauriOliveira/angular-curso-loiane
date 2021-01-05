@@ -1,5 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-data-form',
@@ -9,11 +10,14 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 export class DataFormComponent implements OnInit {
 
   formulario = this.formBuilder.group({
-    nome: [''],
-    email: [''],
+    nome: ['', [Validators.required, /* Validators.minLength(3),Validators.maxLength(25),*/],],//aqui vai a string que server de valor inicial
+    email: ['', [Validators.required, Validators.email],],
   });
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private http: HttpClient,
+  ) {
     /*     this.formulario = new FormGroup({
           nome: new FormControl(null), //aqui vai a string que server de valor inicial
           email: new FormControl(null),
@@ -26,4 +30,19 @@ export class DataFormComponent implements OnInit {
   }
 
   ngOnInit(): void { }
+
+  onSubmit(): void {
+    this.http.post('https://httpbiny.org/post', JSON.stringify(this.formulario.value))
+      .subscribe(data => {
+        console.log(data);
+
+        //limpa o form
+        this.formulario.reset();
+      }, (error: any) => alert('Deu erro'));
+  }
+
+  reset() {
+    //limpa o form
+    this.formulario.reset();
+  }
 }

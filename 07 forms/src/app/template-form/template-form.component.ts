@@ -41,10 +41,14 @@ export class TemplateFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit(form: NgForm): void {
+  onSubmit(formulario: NgForm): void {
 
-    this.http.post('backend.com/form', JSON.stringify(form.value))
-      .subscribe(data => console.log(data));
+    this.http.post('https://httpbin.org/post', JSON.stringify(formulario.value))
+      .subscribe(data => {
+        console.log(data);
+        //reset form
+        formulario.form.reset();
+      });
   }
 
   aplicaCssErro(campo: NgModel) {
