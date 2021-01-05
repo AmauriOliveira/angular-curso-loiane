@@ -29,7 +29,7 @@
             <label for="cep" class="form-label">CEP:</label>
             <input name="cep" [(ngModel)]="usuario.endereco.cep" type="text" class="form-control" id="cep"
               placeholder="00000-000" required #cep="ngModel" [ngClass]="aplicaCssErro(cep)"
-              (blur)="consultaCEP(cep.value)">
+              (blur)="consultaCEP(cep.value, f)">
             <div class="alert alert-danger invalid-feedback" role="alert">CEP é obrigatório</div>
           </div>
 

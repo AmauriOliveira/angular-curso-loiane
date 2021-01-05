@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm, NgModel } from '@angular/forms';
-
 interface User {
   nome: string | null;
   email: string | null;
@@ -43,12 +42,9 @@ export class TemplateFormComponent implements OnInit {
   }
 
   onSubmit(form: NgForm): void {
-    console.log('Form================================');
-    console.log(form.value);
-    console.log('User================================');
-    console.log(this.usuario);
-    console.log('====================================');
 
+    this.http.post('backend.com/form', JSON.stringify(form.value))
+      .subscribe(data => console.log(data));
   }
 
   aplicaCssErro(campo: NgModel) {
@@ -57,7 +53,7 @@ export class TemplateFormComponent implements OnInit {
     }
   }
 
-  consultaCEP(cep: string) {
+  consultaCEP(cep: string, form: NgForm) {
     //Nova variável "cep" somente com dígitos.
     cep = cep.replace(/\D/g, '');
     //Verifica se campo cep possui valor informado.
@@ -68,17 +64,54 @@ export class TemplateFormComponent implements OnInit {
       //Valida o formato do CEP.
       if (validacep.test(cep)) {
 
+        this.resetForm(form);
+
         this.http.get(`https://viacep.com.br/ws/${cep}/json`)
-          .subscribe((data: any) => this.usuario.endereco = {
+          .subscribe((data: any) => this.populaDadosForm(data, form));
+      }
+    }
+  }
+
+  populaDadosForm(data: any, formulario: NgForm): void {
+
+    /*     formulario.setValue({
+          nome: formulario.value.name,
+          email: formulario.value.email,
+          endereco: {
+            numero: null,
             logradouro: data.logradouro,
             cep: data.cep,
             bairro: data.bairro,
             localidade: data.localidade,
             complemento: data.complemento,
             uf: data.uf,
-          });
-      }
-    }
+          },
+        }); */
+    formulario.form.patchValue({
+      endereco: {
+        logradouro: data.logradouro,
+        cep: data.cep,
+        bairro: data.bairro,
+        localidade: data.localidade,
+        complemento: data.complemento,
+        uf: data.uf,
+      },
+    });
+  }
+
+  resetForm(formulario: NgForm): void {
+
+    formulario.form.patchValue({
+      endereco: {
+        logradouro: null,
+        cep: null,
+        bairro: null,
+        localidade: null,
+        complemento: null,
+        uf: null,
+      },
+    });
   }
 
 }
+
