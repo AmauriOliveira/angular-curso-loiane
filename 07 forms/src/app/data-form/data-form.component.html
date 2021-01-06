@@ -3,8 +3,14 @@
     <div class="form-group">
       <div class="acol-sm-12">
         <label for="nome" class="form-label">Nome:</label>
-        <input formControlName="nome" type="text" class="form-control" id="nome" placeholder="Nome"
-          [ngClass]="aplicaCssErro('nome')">
+        <input
+          formControlName="nome"
+          type="text"
+          class="form-control"
+          id="nome"
+          placeholder="Nome"
+          [ngClass]="aplicaCssErro('nome')"
+        />
         <div class="alert alert-danger invalid-feedback" role="alert">
           Nome é obrigatório
         </div>
@@ -14,83 +20,143 @@
     <div class="form-group">
       <div class="col-sm-12">
         <label for="email" class="form-label">E-mail:</label>
-        <input formControlName="email" type="email" class="form-control" id="email" placeholder="name@example.com" email
-          [ngClass]="aplicaCssErro('email')">
+        <input
+          formControlName="email"
+          type="email"
+          class="form-control"
+          id="email"
+          placeholder="name@example.com"
+          email
+          [ngClass]="aplicaCssErro('email')"
+        />
         <div class="alert alert-danger invalid-feedback" role="alert">
           E-mail é obrigatório
         </div>
-        <div *ngIf="vereficaEmailInvalido()" class="alert alert-danger invalid-feedback" role="alert">
+        <div
+          *ngIf="vereficaEmailInvalido()"
+          class="alert alert-danger invalid-feedback"
+          role="alert"
+        >
           Email Invalido
         </div>
       </div>
     </div>
 
-    <div>
+    <div formGroupName="endereco">
       <div class="form-group">
-
         <div class="row">
           <div class="col-sm-3">
             <label for="cep" class="form-label">CEP:</label>
-            <input formControlName="cep" type=" text" class="form-control" id="cep" placeholder="00000-000"
-              [ngClass]="aplicaCssErro('cep')">
-            <div class="alert alert-danger invalid-feedback" role="alert">CEP é obrigatório</div>
+            <input
+              formControlName="cep"
+              type=" text"
+              class="form-control"
+              id="cep"
+              placeholder="00000-000"
+              [ngClass]="aplicaCssErro('endereco.cep')"
+              (blur)="consultaCEP()"
+            />
+            <div class="alert alert-danger invalid-feedback" role="alert">
+              CEP é obrigatório
+            </div>
           </div>
 
           <div class="col-sm-3">
             <label for="numero" class="form-label">Número:</label>
-            <input formControlName="numero" type=" number" class="form-control" id="numero" placeholder="0"
-              [ngClass]="aplicaCssErro('numero')">
-            <div class="alert alert-danger invalid-feedback" role="alert">Número é obrigatório</div>
+            <input
+              formControlName="numero"
+              type=" number"
+              class="form-control"
+              id="numero"
+              placeholder="0"
+              [ngClass]="aplicaCssErro('endereco.numero')"
+            />
+            <div class="alert alert-danger invalid-feedback" role="alert">
+              Número é obrigatório
+            </div>
           </div>
 
           <div class="col-sm-6">
             <label for="complemento" class="form-label">Complemento:</label>
-            <input formControlName="complemento" type=" text" class="form-control" id="complemento"
-              placeholder="Complemento" [ngClass]="aplicaCssErro('complemento')">
+            <input
+              formControlName="complemento"
+              type=" text"
+              class="form-control"
+              id="complemento"
+              placeholder="Complemento"
+            />
           </div>
         </div>
-
       </div>
 
       <div class="form-group">
         <div class="acol-sm-12">
           <label for="logradouro" class="form-label">Rua:</label>
-          <input formControlName="logradouro" type=" text" class="form-control" id="logradouro"
-            [ngClass]="aplicaCssErro('logradouro')">
-          <div class="alert alert-danger invalid-feedback" role="alert">Rua é obrigatória</div>
+          <input
+            formControlName="logradouro"
+            type=" text"
+            class="form-control"
+            id="logradouro"
+            [ngClass]="aplicaCssErro('endereco.logradouro')"
+          />
+          <div class="alert alert-danger invalid-feedback" role="alert">
+            Rua é obrigatória
+          </div>
         </div>
       </div>
 
       <div class="form-group">
         <div class="row">
-
           <div class="col-sm-5">
             <label for="bairro" class="form-label">Bairro:</label>
-            <input formControlName="bairro" type=" text" class="form-control" id="bairro"
-              [ngClass]="aplicaCssErro('bairro')">
-            <div class="alert alert-danger invalid-feedback" role="alert">Birro é obrigatório</div>
+            <input
+              formControlName="bairro"
+              type=" text"
+              class="form-control"
+              id="bairro"
+              [ngClass]="aplicaCssErro('endereco.bairro')"
+            />
+            <div class="alert alert-danger invalid-feedback" role="alert">
+              Birro é obrigatório
+            </div>
           </div>
 
           <div class="col-sm-4">
             <label for="localidade" class="form-label">Cidade:</label>
-            <input formControlName="localidade" type=" text" class="form-control" id="localidade"
-              [ngClass]="aplicaCssErro('localidade')">
-            <div class="alert alert-danger invalid-feedback" role="alert">Cidade é obrigatória</div>
+            <input
+              formControlName="localidade"
+              type=" text"
+              class="form-control"
+              id="localidade"
+              [ngClass]="aplicaCssErro('endereco.localidade')"
+            />
+            <div class="alert alert-danger invalid-feedback" role="alert">
+              Cidade é obrigatória
+            </div>
           </div>
 
           <div class="col-sm-3">
             <label for="uf" class="form-label">UF:</label>
-            <input formControlName="uf" type=" text" class="form-control" id="uf" [ngClass]="aplicaCssErro('uf')">
-            <div class="alert alert-danger invalid-feedback" role="alert">UF é obrigatório</div>
+            <input
+              formControlName="uf"
+              type=" text"
+              class="form-control"
+              id="uf"
+              [ngClass]="aplicaCssErro('endereco.uf')"
+            />
+            <div class="alert alert-danger invalid-feedback" role="alert">
+              UF é obrigatório
+            </div>
           </div>
         </div>
-
       </div>
     </div>
 
     <div class="form-group col-sm-12">
       <button type="submit" class="btn btn-primary">Enviar</button>
-      <button (click)="reset()" class="btn btn-secondary">Cancelar</button>
+      <button type="reset" (click)="resetForm()" class="btn btn-secondary">
+        Cancelar
+      </button>
     </div>
     <app-form-debug [form]="formulario"> </app-form-debug>
   </form>
