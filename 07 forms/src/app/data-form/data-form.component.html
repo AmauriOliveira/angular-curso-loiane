@@ -117,7 +117,7 @@
               [ngClass]="aplicaCssErro('endereco.bairro')"
             />
             <div class="alert alert-danger invalid-feedback" role="alert">
-              Birro é obrigatório
+              Bairro é obrigatório
             </div>
           </div>
 
@@ -137,13 +137,19 @@
 
           <div class="col-sm-3">
             <label for="uf" class="form-label">UF:</label>
-            <input
+            <select
+              class="form-select"
               formControlName="uf"
-              type=" text"
-              class="form-control"
               id="uf"
               [ngClass]="aplicaCssErro('endereco.uf')"
-            />
+            >
+              <option
+                *ngFor="let estado of estados | async"
+                [value]="estado.sigla"
+              >
+                {{ estado.nome }}
+              </option>
+            </select>
             <div class="alert alert-danger invalid-feedback" role="alert">
               UF é obrigatório
             </div>
@@ -153,10 +159,43 @@
     </div>
 
     <div class="form-group col-sm-12">
+      <label for="cargo" class="form-label">Cargo:</label>
+      <select
+        class="form-select"
+        formControlName="cargo"
+        id="cargo"
+        [compareWith]="compararCargo"
+      >
+        <option *ngFor="let cargo of cargos" [ngValue]="cargo">
+          {{ cargo.desc }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group col-sm-12">
+      <label for="tecnologias" class="form-label">Tecnologias:</label>
+      <select
+        class="form-select"
+        formControlName="tecnologias"
+        id="tecnologias"
+        multiple
+      >
+        <option
+          *ngFor="let tecnologia of tecnologias"
+          [value]="tecnologia.nome"
+        >
+          {{ tecnologia.desc }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group col-sm-12">
       <button type="submit" class="btn btn-primary">Enviar</button>
       <button type="reset" (click)="resetForm()" class="btn btn-secondary">
         Cancelar
       </button>
+      <button (click)="setCargo()" class="btn btn-danger">Setar cargo</button>
+      <button (click)="setTecnologias()" class="btn btn-danger">Setar tecnologia</button>
     </div>
     <app-form-debug [form]="formulario"> </app-form-debug>
   </form>

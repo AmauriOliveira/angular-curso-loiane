@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {
@@ -24,19 +25,25 @@ export class DataFormComponent implements OnInit {
         Validators.required /* Validators.minLength(3),Validators.maxLength(25),*/,
       ],
     ], //aqui vai a string que server de valor inicial
-    email: ['', [Validators.required, Validators.email]],
+    email: [null, [Validators.required, Validators.email]],
     endereco: this.formBuilder.group({
-      cep: ['', [Validators.required]],
-      logradouro: ['', [Validators.required]],
-      complemento: [''],
-      numero: ['', [Validators.required]],
-      bairro: ['', [Validators.required]],
-      localidade: ['', [Validators.required]],
-      uf: ['', [Validators.required]],
+      cep: [null, [Validators.required]],
+      logradouro: [null, [Validators.required]],
+      complemento: [null],
+      numero: [null, [Validators.required]],
+      bairro: [null, [Validators.required]],
+      localidade: [null, [Validators.required]],
+      uf: [null, [Validators.required]],
     }),
+    cargo: [null],
+    tecnologias: [null],
   });
 
-  estados: Estado[] = [];
+  estados: Observable<Estado[]> = new Observable();
+
+  cargos: any[] = [];
+
+  tecnologias: any[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -55,8 +62,14 @@ export class DataFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dropdownService.getEstadoBR()
-      .subscribe((dados: any) => this.estados = dados);
+    /*     this.dropdownService.getEstadoBR()
+          .subscribe((dados: any) => this.estados = dados); */
+    this.estados = this.dropdownService.getEstadoBR();
+
+    //exemplo
+    this.cargos = this.dropdownService.getCargos();
+
+    this.tecnologias = this.dropdownService.getTecnologias();
   }
 
   onSubmit(): void {
@@ -145,6 +158,21 @@ export class DataFormComponent implements OnInit {
         uf: null,
       },
     });
+  }
+
+  setCargo() {
+    const cargo = { nome: 'Dev', nivel: 'Pleno', desc: ' Dev Pl' }
+    this.formulario.get('cargo')?.setValue(cargo);
+  }
+
+  compararCargo(obj1: any, obj2: any): boolean {
+    return obj1 && obj2 ?
+      (obj1.nome === obj2.nome && obj1.nivel === obj2.nivel)
+      : (obj1 === obj2);
+  }
+
+  setTecnologias() {
+    this.formulario.get('tecnologias')?.setValue(['java', 'php']);
   }
 
 }
