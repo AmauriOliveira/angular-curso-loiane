@@ -33,4 +33,13 @@ export class DropdownService {
 
     ]
   }
+
+  getNewsLetter() {
+    return [
+      { valor: 's', desc: 'Sim' },
+      { valor: 'n', desc: 'Não' },
+      { valor: 't', desc: 'Talves' },
+    ]
+  }
+
 }

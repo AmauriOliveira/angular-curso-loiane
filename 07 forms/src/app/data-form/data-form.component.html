@@ -190,12 +190,79 @@
     </div>
 
     <div class="form-group col-sm-12">
+      <label for="newsletter" class="form-label">Newsletters: </label><br />
+      <div
+        id="newsletter"
+        class="form-check form-check-inline"
+        *ngFor="let item of newsletterOptions"
+      >
+        <input
+          [ngClass]="aplicaCssErro('newsletter')"
+          type="radio"
+          id="newsletter"
+          class="form-check-input"
+          name="newsletter"
+          formControlName="newsletter"
+          [value]="item.valor"
+        />
+        <label class="form-check-label">{{ item.desc }}</label>
+      </div>
+      <div class="alert alert-danger invalid-feedback" role="alert"></div>
+    </div>
+
+    <div class="form-group col-sm-12">
+      <div class="form-check form-check-inline">
+        <input
+          [ngClass]="aplicaCssErro('termos')"
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          formControlName="termos"
+          id="termoBox"
+        />
+        <label class="form-check-label" for="termoBox">
+          Aceito os termos
+        </label>
+        <div class="alert alert-danger invalid-feedback" role="alert">
+          Precisa aceitar os termos
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group col-sm-12">
+      <label for="frameworks">FrameWorks:</label>
+      <div id="frameworks">
+        <div
+          class="form-check form-check-inline"
+          formArrayName="frameworks"
+          *ngFor="let item of getFrameworksControls(); let i = index"
+        >
+          <input
+            [ngClass]="aplicaCssErro('frameworks')"
+            class="form-check-input"
+            type="checkbox"
+            [formControlName]="i"
+            id="frameworksBox"
+          />
+          <label class="form-check-label" for="frameworksBox">
+            {{ frameworks[i] }}
+          </label>
+          <!--  <div class="alert alert-danger invalid-feedback" role="alert">
+            Precisa aceitar os termos
+          </div> -->
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group col-sm-12">
       <button type="submit" class="btn btn-primary">Enviar</button>
       <button type="reset" (click)="resetForm()" class="btn btn-secondary">
         Cancelar
       </button>
       <button (click)="setCargo()" class="btn btn-danger">Setar cargo</button>
-      <button (click)="setTecnologias()" class="btn btn-danger">Setar tecnologia</button>
+      <button (click)="setTecnologias()" class="btn btn-danger">
+        Setar tecnologia
+      </button>
     </div>
     <app-form-debug [form]="formulario"> </app-form-debug>
   </form>

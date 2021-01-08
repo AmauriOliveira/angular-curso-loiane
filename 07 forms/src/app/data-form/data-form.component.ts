@@ -2,6 +2,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {
+  FormArray,
   FormBuilder,
   FormControl,
   FormGroup,
@@ -18,32 +19,17 @@ import { DropdownService } from '../shared/services/dropdown.service';
   styleUrls: ['./data-form.component.scss'],
 })
 export class DataFormComponent implements OnInit {
-  formulario = this.formBuilder.group({
-    nome: [
-      '',
-      [
-        Validators.required /* Validators.minLength(3),Validators.maxLength(25),*/,
-      ],
-    ], //aqui vai a string que server de valor inicial
-    email: [null, [Validators.required, Validators.email]],
-    endereco: this.formBuilder.group({
-      cep: [null, [Validators.required]],
-      logradouro: [null, [Validators.required]],
-      complemento: [null],
-      numero: [null, [Validators.required]],
-      bairro: [null, [Validators.required]],
-      localidade: [null, [Validators.required]],
-      uf: [null, [Validators.required]],
-    }),
-    cargo: [null],
-    tecnologias: [null],
-  });
+  formulario: FormGroup = new FormGroup({});
 
   estados: Observable<Estado[]> = new Observable();
 
   cargos: any[] = [];
 
   tecnologias: any[] = [];
+
+  newsletterOptions: any[] = [];
+
+  frameworks: any[] = ['Angular', 'React', 'Vue', 'Sencha'];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -62,6 +48,30 @@ export class DataFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.formulario = this.formBuilder.group({
+      nome: [
+        '',
+        [
+          Validators.required /* Validators.minLength(3),Validators.maxLength(25),*/,
+        ],
+      ], //aqui vai a string que server de valor inicial
+      email: [null, [Validators.required, Validators.email]],
+      endereco: this.formBuilder.group({
+        cep: [null, Validators.required],
+        logradouro: [null, Validators.required],
+        complemento: [null],
+        numero: [null, Validators.required],
+        bairro: [null, Validators.required],
+        localidade: [null, Validators.required],
+        uf: [null, Validators.required],
+      }),
+      cargo: [null],
+      tecnologias: [null],
+      newsletter: [null, Validators.required],
+      termos: [false, Validators.pattern('true')],
+      frameworks: this.buildFrameworks(),
+    });
     /*     this.dropdownService.getEstadoBR()
           .subscribe((dados: any) => this.estados = dados); */
     this.estados = this.dropdownService.getEstadoBR();
@@ -70,12 +80,29 @@ export class DataFormComponent implements OnInit {
     this.cargos = this.dropdownService.getCargos();
 
     this.tecnologias = this.dropdownService.getTecnologias();
+
+    this.newsletterOptions = this.dropdownService.getNewsLetter();
+  }
+
+  buildFrameworks() {
+
+    const values = this.frameworks.map(v => new FormControl(false));
+
+    return this.formBuilder.array(values);
   }
 
   onSubmit(): void {
+    let valueSubmit = Object.assign({}, this.formulario.value);
+
+    valueSubmit = Object.assign(valueSubmit, {
+      frameworks: valueSubmit.frameworks
+        .map((v: any, i: number) => v ? this.frameworks[i] : null)
+        .filter((v: any) => v !== null)
+    });
+
     if (this.formulario.valid) {
       this.http
-        .post('https://httpbin.org/post', JSON.stringify(this.formulario.value))
+        .post('https://httpbin.org/post', JSON.stringify(valueSubmit))
         .subscribe(
           (data) => {
             console.log(data);
@@ -173,6 +200,10 @@ export class DataFormComponent implements OnInit {
 
   setTecnologias() {
     this.formulario.get('tecnologias')?.setValue(['java', 'php']);
+  }
+
+  getFrameworksControls() {
+    return this.formulario.get('frameworks') ? (<FormArray>this.formulario.get('frameworks')).controls : null;
   }
 
 }
