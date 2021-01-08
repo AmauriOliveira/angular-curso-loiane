@@ -37,7 +37,25 @@
           class="alert alert-danger invalid-feedback"
           role="alert"
         >
-          Email Invalido
+          E-mail Invalido
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-12">
+        <label for="confirmarEmail" class="form-label">Confirmar E-mail:</label>
+        <input
+          formControlName="confirmarEmail"
+          type="confirmarEmail"
+          class="form-control"
+          id="confirmarEmail"
+          placeholder="name@example.com"
+          confirmarEmail
+          [ngClass]="aplicaCssErro('confirmarEmail')"
+        />
+        <div class="alert alert-danger invalid-feedback" role="alert">
+          Confirmar E-mail não é igual
         </div>
       </div>
     </div>
@@ -57,7 +75,7 @@
               (blur)="consultaCEP()"
             />
             <div class="alert alert-danger invalid-feedback" role="alert">
-              CEP é obrigatório
+              Obrigatório um CEP válido
             </div>
           </div>
 
@@ -195,6 +213,7 @@
         id="newsletter"
         class="form-check form-check-inline"
         *ngFor="let item of newsletterOptions"
+        [ngClass]="aplicaCssErro('newsletter')"
       >
         <input
           [ngClass]="aplicaCssErro('newsletter')"
@@ -207,7 +226,9 @@
         />
         <label class="form-check-label">{{ item.desc }}</label>
       </div>
-      <div class="alert alert-danger invalid-feedback" role="alert"></div>
+      <div class="alert alert-danger invalid-feedback" role="alert">
+        Escolha um
+      </div>
     </div>
 
     <div class="form-group col-sm-12">
@@ -236,6 +257,7 @@
           class="form-check form-check-inline"
           formArrayName="frameworks"
           *ngFor="let item of getFrameworksControls(); let i = index"
+          [ngClass]="aplicaCssErro('frameworks')"
         >
           <input
             [ngClass]="aplicaCssErro('frameworks')"
@@ -247,9 +269,9 @@
           <label class="form-check-label" for="frameworksBox">
             {{ frameworks[i] }}
           </label>
-          <!--  <div class="alert alert-danger invalid-feedback" role="alert">
-            Precisa aceitar os termos
-          </div> -->
+        </div>
+        <div class="alert alert-danger invalid-feedback" role="alert">
+          Precisa marcar no minimo 2
         </div>
       </div>
     </div>
