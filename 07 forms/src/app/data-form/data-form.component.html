@@ -1,8 +1,8 @@
 <div class="container">
   <form class="row g-3" (ngSubmit)="onSubmit()" [formGroup]="formulario">
     <div class="form-group">
-      <div class="acol-sm-12">
-        <label for="nome" class="form-label">Nome:</label>
+      <div class="col-sm-12">
+        <!-- <label for="nome" class="form-label">Nome:</label>
         <input
           formControlName="nome"
           type="text"
@@ -16,7 +16,15 @@
           label="Nome"
           class="alert alert-danger invalid-feedback"
           role="alert"
-        ></app-error-msg>
+        ></app-error-msg> -->
+        <app-input-field
+          formControlName="nome"
+          [classeCss]="aplicaCssErro('nome')"
+          placeholder="Nome"
+          id="nome"
+          label="Nome"
+          [control]="formulario.get('nome')"
+        ></app-input-field>
       </div>
     </div>
 

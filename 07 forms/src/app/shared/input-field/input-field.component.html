@@ -1,0 +1,16 @@
+<label [attr.for]="id" class="form-label">{{ label }}</label>
+<input
+  [type]="type"
+  class="form-control"
+  [id]="id"
+  [readonly]="!!isReadOnly"
+  [placeholder]="placeholder"
+  [ngClass]="classeCss"
+  [(ngModel)]="value"
+/>
+<app-error-msg
+  [control]="control"
+  [label]="label"
+  class="alert alert-danger invalid-feedback"
+  role="alert"
+></app-error-msg>

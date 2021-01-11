@@ -1,7 +1,5 @@
 <div class="detalhe-form card" *ngIf="form">
-  <div class="card-header">
-    Detalhes do form
-  </div>
+  <div class="card-header">Detalhes do form</div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item">
       Form válido: <strong>{{ form.valid }}</strong>
@@ -10,7 +8,8 @@
       Form submetido: <strong>{{ form.submitted }}</strong>
     </li>
     <li class="list-group-item">
-      Valores: <br> <strong>{{ form.value | json }}</strong>
+      Valores: <br />
+      <strong>{{ form.value | json }}</strong>
     </li>
   </ul>
 </div>
