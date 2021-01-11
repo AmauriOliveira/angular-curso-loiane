@@ -11,9 +11,12 @@
           placeholder="Nome"
           [ngClass]="aplicaCssErro('nome')"
         />
-        <div class="alert alert-danger invalid-feedback" role="alert">
-          Nome é obrigatório
-        </div>
+        <app-error-msg
+          [control]="formulario.get('nome')"
+          label="Nome"
+          class="alert alert-danger invalid-feedback"
+          role="alert"
+        ></app-error-msg>
       </div>
     </div>
 
@@ -29,16 +32,12 @@
           email
           [ngClass]="aplicaCssErro('email')"
         />
-        <div class="alert alert-danger invalid-feedback" role="alert">
-          E-mail é obrigatório
-        </div>
-        <div
-          *ngIf="vereficaEmailInvalido()"
+        <app-error-msg
+          [control]="formulario.get('email')"
+          label="E-mail"
           class="alert alert-danger invalid-feedback"
           role="alert"
-        >
-          E-mail Invalido
-        </div>
+        ></app-error-msg>
       </div>
     </div>
 
@@ -54,9 +53,12 @@
           confirmarEmail
           [ngClass]="aplicaCssErro('confirmarEmail')"
         />
-        <div class="alert alert-danger invalid-feedback" role="alert">
-          Confirmar E-mail não é igual
-        </div>
+        <app-error-msg
+          [control]="formulario.get('confirmarEmail')"
+          label="E-mail"
+          class="alert alert-danger invalid-feedback"
+          role="alert"
+        ></app-error-msg>
       </div>
     </div>
 
@@ -72,11 +74,13 @@
               id="cep"
               placeholder="00000-000"
               [ngClass]="aplicaCssErro('endereco.cep')"
-              (blur)="consultaCEP()"
             />
-            <div class="alert alert-danger invalid-feedback" role="alert">
-              Obrigatório um CEP válido
-            </div>
+            <app-error-msg
+              [control]="formulario.get('endereco.cep')"
+              label="CEP"
+              class="alert alert-danger invalid-feedback"
+              role="alert"
+            ></app-error-msg>
           </div>
 
           <div class="col-sm-3">
@@ -273,6 +277,10 @@
         <div class="alert alert-danger invalid-feedback" role="alert">
           Precisa marcar no minimo 2
         </div>
+        <!-- <app-error-msg
+          [control]="formulario.get('frameworks')"
+          label="Frameworks"
+        ></app-error-msg> -->
       </div>
     </div>
 
