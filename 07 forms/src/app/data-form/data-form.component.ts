@@ -78,7 +78,7 @@ export class DataFormComponent implements OnInit {
     this.formulario.get('endereco.cep')?.statusChanges
       .pipe(
         distinctUntilChanged(),
-        tap(value => console.log(value)),
+        // tap(value => console.log(value)),
         switchMap(status => status === 'VALID' ?
           this.cepService.consultaCEP(this.formulario.get('endereco.cep')?.value)
           : empty()
@@ -150,9 +150,9 @@ export class DataFormComponent implements OnInit {
   }
 
   aplicaCssErro(nomeCampo: string) {
-    let campoEmail = this.formulario.get(nomeCampo);
+    let campo = this.formulario.get(nomeCampo);
     return {
-      'is-invalid': !campoEmail?.valid && (campoEmail?.touched || campoEmail?.dirty),
+      'is-invalid': !campo?.valid && (campo?.touched || campo?.dirty),
     };
   }
 

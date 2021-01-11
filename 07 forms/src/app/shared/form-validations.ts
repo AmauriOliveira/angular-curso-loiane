@@ -50,15 +50,19 @@ export class FormValidations {
   }
 
   static getErrorMsg(fieldName: string, validatorName: string, validatorValue?: any): any {
+    console.log(validatorName);
+
     const config: any = {
       'required': `${fieldName} é obrigatório.`,
       'minlength': `${fieldName} precisa ter no mínimo ${validatorValue.requiredLength} caracteres.`,
       'maxlength': `${fieldName} precisa ter no máximo ${validatorValue.requiredLength} caracteres.`,
       'cepInvalido': 'CEP inválido.',
+      'email': 'Email é inválido',
       'emailInvalid': 'Email já cadastrado!',
-      'otEqualToOther': 'Campos não são iguais',
-      'pattern': 'Campo inválido'
+      'notEqualToOther': 'Campos não são iguais',
+      'pattern': `${fieldName} inválido`
     };
+
 
     return config[validatorName];
   }
