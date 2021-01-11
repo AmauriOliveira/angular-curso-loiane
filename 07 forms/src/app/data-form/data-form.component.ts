@@ -3,10 +3,9 @@ import {
   FormArray,
   FormBuilder,
   FormControl,
-  FormGroup,
   Validators,
 } from '@angular/forms';
-import { empty, Observable } from 'rxjs';
+import { empty, Observable, pipe } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 import { Estado } from '../shared/models/estado';
@@ -16,6 +15,7 @@ import { FormValidations } from '../shared/form-validations';
 import { VereficaEmailService } from './services/verefica-email.service';
 import { map, tap, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { BaseFormComponent } from '../shared/base-form/base-form.component';
+import { Cidade } from '../shared/models/cidade';
 
 @Component({
   selector: 'app-data-form',
@@ -23,9 +23,9 @@ import { BaseFormComponent } from '../shared/base-form/base-form.component';
   styleUrls: ['./data-form.component.scss'],
 })
 export class DataFormComponent extends BaseFormComponent implements OnInit {
-  //formulario: FormGroup = new FormGroup({});
-
-  estados: Observable<Estado[]> = new Observable();
+  //estados: Observable<Estado[]> = new Observable();
+  estados: Estado[] = [];
+  cidades: Cidade[] = [];
 
   cargos: any[] = [];
 
@@ -80,18 +80,35 @@ export class DataFormComponent extends BaseFormComponent implements OnInit {
         switchMap((status) =>
           status === 'VALID'
             ? this.cepService.consultaCEP(
-                this.formulario.get('endereco.cep')?.value
-              )
+              this.formulario.get('endereco.cep')?.value
+            )
             : empty()
         )
       )
       .subscribe((dados: any) => (dados ? this.populaDadosForm(dados) : {}));
 
-    /*     this.dropdownService.getEstadoBR()
-          .subscribe((dados: any) => this.estados = dados); */
-    this.estados = this.dropdownService.getEstadoBR();
+    this.formulario
+      .get('endereco.uf')
+      ?.valueChanges.pipe(
+        // tap((estado) => console.log('Novo estado ', estado)),
+        map((estado) => this.estados.filter((uf) => uf.sigla === estado)),
+        map((estados) =>
+          estados && estados.length > 0 ? estados[0].id : 0/* empty() */
+        ),
+        switchMap((estadoId: number) =>
+          this.dropdownService.getCidadeBR(estadoId)
+        ),
+        // tap(console.log),
+      )
+      .subscribe(cidades => this.cidades = cidades);
 
-    //exemplo
+    // this.dropdownService.getCidadeBR(8).subscribe(console.log);
+
+    this.dropdownService
+      .getEstadoBR()
+      .subscribe((dados: any) => (this.estados = dados));
+    // this.estados = this.dropdownService.getEstadoBR();
+
     this.cargos = this.dropdownService.getCargos();
 
     this.tecnologias = this.dropdownService.getTecnologias();

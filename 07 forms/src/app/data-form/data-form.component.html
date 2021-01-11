@@ -161,17 +161,20 @@
           </div>
 
           <div class="col-sm-4">
-            <label for="localidade" class="form-label">Cidade:</label>
-            <input
+            <label for="cidade" class="form-label">Cidade:</label>
+            <select
+              class="form-select"
               formControlName="localidade"
-              type=" text"
-              class="form-control"
-              id="localidade"
+              id="cidade"
               [ngClass]="aplicaCssErro('endereco.localidade')"
-            />
+            >
+              <option *ngFor="let cidade of cidades" [value]="cidade.nome">
+                {{ cidade.nome }}
+              </option>
+            </select>
             <app-error-msg
               [control]="formulario.get('endereco.localidade')"
-              label="Cidade"
+              label="cidade"
               class="alert alert-danger invalid-feedback"
               role="alert"
             ></app-error-msg>
@@ -185,10 +188,7 @@
               id="uf"
               [ngClass]="aplicaCssErro('endereco.uf')"
             >
-              <option
-                *ngFor="let estado of estados | async"
-                [value]="estado.sigla"
-              >
+              <option *ngFor="let estado of estados" [value]="estado.sigla">
                 {{ estado.nome }}
               </option>
             </select>

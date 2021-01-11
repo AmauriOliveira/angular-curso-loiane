@@ -28,7 +28,7 @@ Nesse repositório será armazenado tudo que eu desenvolver durante o curso da L
 - [X] Pipes / Filtros
 - [X] Rotas
 - [X] Formulários / Template Driven
-- [ ] Formulários Reativos / data-driven
+- [X] Formulários Reativos / data-driven
 - [ ] Http
 - [ ] Depuração / Debug
 - [ ] Build e Deploy
