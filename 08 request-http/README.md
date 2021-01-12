@@ -24,4 +24,18 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 ## Further help
 
+## Fake BackEnd
+
+> install
+
+```bash
+npm i -g json-server
+```
+
+> run
+
+```bash
+json-server --watch db.json
+```
+
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
