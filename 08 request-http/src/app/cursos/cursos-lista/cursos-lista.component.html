@@ -8,7 +8,7 @@
     </div>
   </div>
   <div class="card-body">
-    <table class="table">
+    <table class="table" *ngIf="cursos$ | async as cursosOBS; else loading">
       <thead>
         <tr>
           <th scope="col">#</th>
@@ -17,7 +17,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let curso of cursos">
+        <tr *ngFor="let curso of cursosOBS">
           <th scope="row">{{ curso.id }}</th>
           <td>{{ curso.nome }}</td>
           <td>
@@ -33,5 +33,10 @@
         </tr>
       </tbody>
     </table>
+    <ng-template #loading>
+      <div class="alert alert-info" role="alert">
+        <span>Carregando Cursos ...</span>
+      </div>
+    </ng-template>
   </div>
 </div>

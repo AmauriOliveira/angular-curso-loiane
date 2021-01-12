@@ -1,19 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
+import { delay, tap } from 'rxjs/operators';
 
 import { Curso } from './curso';
+import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CursosService {
 
-  private readonly API = 'http://localhost:3000/cursos';
+  private readonly API = `${environment.API}cursos`;
 
   constructor(private http: HttpClient) { }
-  listAll() {
+  listAll(): Observable<Curso[]> {
     return this.http.get<Curso[]>(this.API).pipe(
+      delay(2000), //fins de exemplo
       tap(console.log)
     );
   }
