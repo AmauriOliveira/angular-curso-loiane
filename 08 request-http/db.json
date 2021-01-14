@@ -7,6 +7,46 @@
     {
       "nome": "Java",
       "id": 2
+    },
+    {
+      "nome": "React",
+      "id": 3
+    },
+    {
+      "nome": "Vue",
+      "id": 4
+    },
+    {
+      "nome": "Unity",
+      "id": 5
+    },
+    {
+      "nome": "Curso du bom",
+      "id": 6
+    },
+    {
+      "nome": "jose",
+      "id": 7
+    },
+    {
+      "nome": "amauri antonio de oliveira",
+      "id": 8
+    },
+    {
+      "nome": "amauri antonio de oliveira",
+      "id": 9
+    },
+    {
+      "nome": "Amauri Antonio de Oliveira",
+      "id": 10
+    },
+    {
+      "nome": "novo",
+      "id": 11
+    },
+    {
+      "nome": "bla bla bla",
+      "id": 12
     }
   ]
 }

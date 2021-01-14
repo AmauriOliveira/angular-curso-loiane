@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { empty, Observable, Subject } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+
 import { AlertModalService } from 'src/app/shared/alert-modal.service';
 
 import { Curso } from '../curso';
@@ -18,7 +20,9 @@ export class CursosListaComponent implements OnInit {
 
   constructor(
     private service: CursosService,
-    private alertModalService: AlertModalService
+    private alertModalService: AlertModalService,
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
@@ -27,7 +31,7 @@ export class CursosListaComponent implements OnInit {
   }
 
   onRefresh(): void {
-    this.cursos$ = this.service.listAll().pipe(
+    this.cursos$ = this.service.listAllCurso().pipe(
       // pode colocar outros operadores da rxjs... porem deixei o catchError para o fim
       catchError((error: any) => {
         console.error(error);
@@ -49,5 +53,9 @@ export class CursosListaComponent implements OnInit {
     //   // ,error => console.error(error),
     //   // () => console.log('Obserservable completo!')
     // );
+  }
+
+  onEdit(id: number): void {
+    this.router.navigate(['editar', id], { relativeTo: this.route });
   }
 }
