@@ -14,7 +14,7 @@
         <div
           class="invalid-feedback alert alert-danger"
           role="alert"
-          *ngIf="form.get('nome')?.errors!!['required']"
+          *ngIf="(form.get('nome')?.errors)!['required']"
         >
           Por favor informe um nome para o curso
         </div>

@@ -20,11 +20,23 @@ export class CursosService {
     );
   }
 
-  loadCursoById(id: number): any {
-    return this.http.get(`${this.API}/${id}`).pipe(take(1));
+  loadCursoById(id: number): Observable<Curso> {
+    return this.http.get<Curso>(`${this.API}/${id}`).pipe(take(1));
   }
 
-  createCurso(curso: any): any {
+  private createCurso(curso: Curso): any {
     return this.http.post(this.API, curso).pipe(take(1));
+  }
+
+  private updateCurso(curso: Curso): any {
+    return this.http.put(`${this.API}/${curso.id}`, curso).pipe(take(1));
+  }
+
+  saveCurso(curso: Curso): any {
+    if (curso.id > 0) {
+      return this.updateCurso(curso);
+    } else {
+      return this.createCurso(curso);
+    }
   }
 }
