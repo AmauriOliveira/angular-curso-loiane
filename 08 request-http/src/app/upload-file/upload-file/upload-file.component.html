@@ -1,0 +1,22 @@
+<div class="margin-top-down">
+  <div class="custom-file">
+    <input
+      type="file"
+      class="custom-file-input"
+      id="customFile"
+      (change)="onChange($event)"
+      multiple
+    />
+    <label class="custom-file-label" id="customFileLabel" for="customFile"
+      >Selecionar Arquivo</label
+    >
+  </div>
+</div>
+<button
+  type="button"
+  class="btn btn-primary float-right"
+  (click)="onUpload()"
+  [disabled]="!files"
+>
+  Upload
+</button>
