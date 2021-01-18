@@ -6,6 +6,7 @@ import { map, switchMap } from 'rxjs/operators';
 import { AlertModalService } from 'src/app/shared/alert-modal.service';
 import { Curso } from '../curso';
 import { CursosService } from '../cursos.service';
+import { Cursos2Service } from '../cursos2.service';
 
 @Component({
   selector: 'app-cursos-form',
@@ -18,7 +19,7 @@ export class CursosFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private cursosService: CursosService,
+    private cursosService: Cursos2Service,
     private alertModalService: AlertModalService,
     private location: Location,
     private route: ActivatedRoute
@@ -86,13 +87,15 @@ export class CursosFormComponent implements OnInit {
     }
 
     if (this.form.valid) {
-      this.cursosService.saveCurso(this.form.value).subscribe(
-        (success: any) => {
-          this.alertModalService.showAlertSuccess(msgSuccess);
-          this.location.back();
-        },
-        (error: any) => this.alertModalService.showAlertDanger(msgError)
-      );
+      this.cursosService
+        .save(this.form.get('id')?.value, this.form.value)
+        .subscribe(
+          (success: any) => {
+            this.alertModalService.showAlertSuccess(msgSuccess);
+            this.location.back();
+          },
+          (error: any) => this.alertModalService.showAlertDanger(msgError)
+        );
 
       /*       if (this.form.value.id > 0) {
         this.cursosService.updateCurso(this.form.value).subscribe(

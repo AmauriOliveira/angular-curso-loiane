@@ -38,5 +38,6 @@ export class ConfirmModalComponent implements OnInit {
 
   private confirmAndClose(value: boolean) {
     this.confirmResult.next(value);
+    this.bsModalRef.hide();
   }
 }

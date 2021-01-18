@@ -13,6 +13,7 @@ export class CursosService {
   private readonly API = `${environment.API}cursos`;
 
   constructor(private http: HttpClient) {}
+
   listAllCurso(): Observable<Curso[]> {
     return this.http.get<Curso[]>(this.API).pipe(
       delay(2000) //fins de exemplo
