@@ -1,5 +1,6 @@
 import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { filterResponse, uploadProgress } from 'src/app/shared/rxjs-operators';
 import { environment } from 'src/environments/environment';
 import { UploadFileService } from '../upload-file.service';
 
@@ -41,20 +42,39 @@ export class UploadFileComponent implements OnInit, OnDestroy {
     if (this.files && this.files.size > 0) {
       this.uploadFileService
         .upload(this.files, `${environment.BASE_URL}/upload`)
-        .subscribe((event: HttpEvent<Object>) => {
+        .pipe(
+          uploadProgress((progress) => {
+            this.progress = progress;
+          }),
+          filterResponse()
+        )
+        .subscribe((response: any) => console.log('Upload concluído.'));
+      /*       .subscribe((event: HttpEvent<Object>) => {
           if (event.type === HttpEventType.Response) {
             console.log('Upload concluído.');
           } else if (event.type === HttpEventType.UploadProgress) {
             const percentDone = Math.round((event.loaded * 100) / event.total!);
 
-            console.log('====================================');
-            console.log(percentDone);
-            console.log('====================================');
-
             this.progress = percentDone;
           }
-        });
+        }); */
     }
+  }
+
+  onDownloadExcel(): any {
+    this.uploadFileService
+      .download(`${environment.BASE_URL}/downloadExcel`)
+      .subscribe((response: any) => {
+        this.uploadFileService.handleFile(response, 'report.xlsx');
+      });
+  }
+
+  onDownloadPdf(): any {
+    this.uploadFileService
+      .download(`${environment.BASE_URL}/downloadPdf`)
+      .subscribe((response: any) => {
+        this.uploadFileService.handleFile(response, 'report.pdf');
+      });
   }
 
   ngOnDestroy() {

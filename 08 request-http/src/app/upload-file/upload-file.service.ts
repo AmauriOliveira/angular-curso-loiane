@@ -20,4 +20,38 @@ export class UploadFileService {
       reportProgress: true,
     }); // outra forma da linha acima
   }
+
+  download(url: string): any {
+    return this.http.get(url, { responseType: 'blob' as 'json' });
+  }
+
+  handleFile(response: any, fileName: string): any {
+    const blob = new Blob([response], { type: response.type });
+
+    // IE
+    if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+      window.navigator.msSaveOrOpenBlob(blob);
+      return;
+    }
+
+    const file = window.URL.createObjectURL(blob);
+
+    const link = document.createElement('a');
+    link.href = file;
+    link.download = fileName;
+
+    //link.click();
+    link.dispatchEvent(
+      new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+        view: window,
+      })
+    );
+    // para o firefox deletar requer um daley
+    setTimeout(() => {
+      window.URL.revokeObjectURL(file);
+      link.remove();
+    }, 100);
+  }
 }

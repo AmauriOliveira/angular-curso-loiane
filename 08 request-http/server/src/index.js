@@ -23,6 +23,14 @@ app.post("/upload", multipartyMiddleware, (request, response) => {
   return response.json({ message: files });
 });
 
+app.get("/downloadExcel", (request, response) => {
+  response.download("./downloads/report.xlsx");
+});
+
+app.get("/downloadPdf", (request, response) => {
+  response.download("./downloads/report.pdf");
+});
+
 app.use((error, request, response, next) =>
   response.json({ error: error.message })
 );
