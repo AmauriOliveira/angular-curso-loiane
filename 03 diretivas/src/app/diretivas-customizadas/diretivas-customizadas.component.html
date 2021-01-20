@@ -2,34 +2,29 @@
 
 <button fundoAmarelo>Botão amarelo... errou</button>
 
-<hr>
+<hr />
 
-<p highlightMouse>
-  texto com High Light ao passar o mouse Mouse
-</p>
+<p highlightMouse>texto com High Light ao passar o mouse Mouse</p>
 
-<hr>
+<hr />
 
 <p [highlight]="'red'" [defaultColor]="'gray'">
   texto com High Light ao passar o mouse Mouse
 </p>
-<hr>
+<hr />
 
 <h5>Diretiva Estrutura Customizada - ngElse</h5>
 
-<div *ngIf="mostrarCursos">
-  Lista de cursos:
-</div>
-<div *ngElse="mostrarCursos">
-  Não existem cursos nessa categoria
-</div>
-<hr><br>
+<div *ngIf="mostrarCursos">Lista de cursos:</div>
+<div *ngElse="mostrarCursos">Não existem cursos nessa categoria</div>
+<hr />
+<br />
 <button (click)="controleCurso()">Mostar ou esconder cursos</button>
-<hr>
+<hr />
 
 <div [hidden]="!mostrarCursos">Verdadeiro</div>
 <div [hidden]="mostrarCursos">Falso</div>
-<hr>
+<hr />
 
 <ng-template [ngIf]="mostrarCursos">
   <div>Lista de cursos 1</div>

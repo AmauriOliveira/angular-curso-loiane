@@ -5,13 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { TemplateFormComponent } from './template-form.component';
 import { SharedModule } from '../shared/shared.module';
 @NgModule({
-  declarations: [
-    TemplateFormComponent,
-  ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    SharedModule,
-  ]
+  declarations: [TemplateFormComponent],
+  imports: [CommonModule, FormsModule, SharedModule],
 })
-export class TemplateFormModule { }
+export class TemplateFormModule {}

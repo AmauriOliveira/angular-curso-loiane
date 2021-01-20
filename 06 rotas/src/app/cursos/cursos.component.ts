@@ -7,10 +7,9 @@ import { CursosService, Curso } from './cursos.service';
 @Component({
   selector: 'app-cursos',
   templateUrl: './cursos.component.html',
-  styleUrls: ['./cursos.component.scss']
+  styleUrls: ['./cursos.component.scss'],
 })
 export class CursosComponent implements OnInit {
-
   cursos: Curso[] = [];
   pagina: number = 1;
   inscricao: Subscription;
@@ -18,13 +17,11 @@ export class CursosComponent implements OnInit {
   constructor(
     private cursosService: CursosService,
     private route: ActivatedRoute,
-    private router: Router,
+    private router: Router
   ) {
-    this.inscricao = this.route.queryParams.subscribe(
-      (queryParams: any) => {
-        this.pagina = queryParams['pagina'];
-      }
-    );
+    this.inscricao = this.route.queryParams.subscribe((queryParams: any) => {
+      this.pagina = queryParams['pagina'];
+    });
   }
 
   ngOnInit(): void {
@@ -33,11 +30,12 @@ export class CursosComponent implements OnInit {
 
   proximaPagina(): void {
     //this.pagina++;
-    this.router.navigate(['/cursos'], { queryParams: { 'pagina': ++this.pagina } });
+    this.router.navigate(['/cursos'], {
+      queryParams: { pagina: ++this.pagina },
+    });
   }
 
   ngOnDestroy(): void {
     this.inscricao.unsubscribe();
   }
-
 }

@@ -3,8 +3,12 @@
     <div class="col-sm">
       <p>Lista de Alunos</p>
       <div class="list-group">
-        <a class="list-group-item list-group-item-action" *ngFor="let aluno of alunos" [routerLink]="[aluno.id]"
-          routerLinkActive="active border-danger">
+        <a
+          class="list-group-item list-group-item-action"
+          *ngFor="let aluno of alunos"
+          [routerLink]="[aluno.id]"
+          routerLinkActive="active border-danger"
+        >
           {{ aluno.nome }}
         </a>
       </div>

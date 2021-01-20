@@ -3,18 +3,17 @@ import { Router } from '@angular/router';
 import { Usuario } from './Usuario';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   private usuarioAutenticado: boolean = false;
 
   mostrarMenuEmitter: EventEmitter<boolean> = new EventEmitter();
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   fazerLogin({ nome, senha }: Usuario): void {
     if (nome === 'amauri' && senha === 'oliveira') {
-
       this.usuarioAutenticado = true;
 
       this.mostrarMenuEmitter.emit(true);
@@ -25,7 +24,6 @@ export class AuthService {
 
       this.mostrarMenuEmitter.emit(false);
     }
-
   }
 
   usuarioEstaAuntenticado(): boolean {

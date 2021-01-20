@@ -21,22 +21,20 @@ registerLocaleData(ptBr); // necessário a partir do Angular v5
     FiltroArrayPipe,
     FiltroArrayImpuroPipe,
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-  ],
+  imports: [BrowserModule, FormsModule],
   providers: [
     SettingsService,
     {
       provide: LOCALE_ID,
       deps: [SettingsService],
-      useFactory: (settingsService: SettingsService) => settingsService.getLocale()
+      useFactory: (settingsService: SettingsService) =>
+        settingsService.getLocale(),
     },
     /*   {
         provide: LOCALE_ID,
         useValue: 'pt-BR',
       }, */
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -8,19 +8,17 @@ import { AlunosService } from '../alunos.service';
 @Component({
   selector: 'app-aluno-detalhe',
   templateUrl: './aluno-detalhe.component.html',
-  styleUrls: ['./aluno-detalhe.component.scss']
+  styleUrls: ['./aluno-detalhe.component.scss'],
 })
 export class AlunoDetalheComponent implements OnInit {
-
   aluno: Aluno = new Aluno(0, '', '');
   inscricao: Subscription = new Subscription();
-
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private alunosService: AlunosService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     /*    this.inscricao = this.route.params.subscribe(
@@ -30,7 +28,9 @@ export class AlunoDetalheComponent implements OnInit {
          }
        ); */
     this.inscricao = this.route.data.subscribe(
-      info => { this.aluno = info.aluno }
+      (info) => {
+        this.aluno = info.aluno;
+      }
       // mesmo nome dado na resolver da rota
     );
   }
@@ -42,5 +42,4 @@ export class AlunoDetalheComponent implements OnInit {
   ngOnDestroy() {
     this.inscricao.unsubscribe();
   }
-
 }

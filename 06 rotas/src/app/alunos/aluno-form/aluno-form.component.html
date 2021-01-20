@@ -3,14 +3,19 @@
   <div class="card">
     <ul class="list-group list-group-flush">
       <li class="list-group-item">
-        <input disabled [(ngModel)]="aluno.id" placeholder="ID" type="text">
+        <input disabled [(ngModel)]="aluno.id" placeholder="ID" type="text" />
       </li>
       <li class="list-group-item">
-        <input [(ngModel)]="aluno.nome" placeholder="Nome" type="text" (input)="onInputEdit()">
+        <input
+          [(ngModel)]="aluno.nome"
+          placeholder="Nome"
+          type="text"
+          (input)="onInputEdit()"
+        />
       </li>
       <li class="list-group-item">
-        <input [(ngModel)]="aluno.email" placeholder="E-mail" type="email">
+        <input [(ngModel)]="aluno.email" placeholder="E-mail" type="email" />
       </li>
     </ul>
   </div>
-</div >
+</div>

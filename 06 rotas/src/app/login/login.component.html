@@ -1,20 +1,33 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-6">
-      <br>
+      <br />
       <h5>Faça o Login</h5>
       <!-- <form> -->
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">E-mail</label>
-        <input [(ngModel)]="usuario.nome" type="text" placeholder="E-mail" class="form-control" id="exampleInputEmail1"
-          aria-describedby="emailHelp">
+        <input
+          [(ngModel)]="usuario.nome"
+          type="text"
+          placeholder="E-mail"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+        />
       </div>
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Senha</label>
-        <input [(ngModel)]="usuario.senha" type="password" placeholder="Senha" class="form-control"
-          id="exampleInputPassword1">
+        <input
+          [(ngModel)]="usuario.senha"
+          type="password"
+          placeholder="Senha"
+          class="form-control"
+          id="exampleInputPassword1"
+        />
       </div>
-      <button (click)="fazerLogin()" type="submit" class="btn btn-primary">LogIn</button>
+      <button (click)="fazerLogin()" type="submit" class="btn btn-primary">
+        LogIn
+      </button>
       <!-- </form> -->
     </div>
   </div>

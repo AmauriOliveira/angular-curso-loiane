@@ -18,17 +18,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     LoginComponent,
     PageNotFoundComponent,
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    AppRoutingModule,
-  ],
-  providers: [
-    AuthService,
-    AuthGuard,
-    CursosGuard,
-    AlunosGuard,
-  ],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, FormsModule, AppRoutingModule],
+  providers: [AuthService, AuthGuard, CursosGuard, AlunosGuard],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

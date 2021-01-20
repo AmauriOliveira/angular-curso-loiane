@@ -20,10 +20,9 @@ interface Endereco {
 @Component({
   selector: 'app-template-form',
   templateUrl: './template-form.component.html',
-  styleUrls: ['./template-form.component.scss']
+  styleUrls: ['./template-form.component.scss'],
 })
 export class TemplateFormComponent implements OnInit {
-
   usuario: User = {
     nome: null,
     email: null,
@@ -35,20 +34,19 @@ export class TemplateFormComponent implements OnInit {
       bairro: null,
       localidade: null,
       uf: null,
-    }
-  }
+    },
+  };
   constructor(
     private http: HttpClient,
-    private consultaCepService: ConsultaCepService,
-  ) { }
+    private consultaCepService: ConsultaCepService
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onSubmit(formulario: NgForm): void {
-
-    this.http.post('https://httpbin.org/post', JSON.stringify(formulario.value))
-      .subscribe(data => {
+    this.http
+      .post('https://httpbin.org/post', JSON.stringify(formulario.value))
+      .subscribe((data) => {
         console.log(data);
         //reset form
         formulario.form.reset();
@@ -58,30 +56,29 @@ export class TemplateFormComponent implements OnInit {
   aplicaCssErro(campo: NgModel) {
     return {
       'is-invalid': !campo.valid && campo.touched,
-    }
+    };
   }
 
   consultaCEP(cep: string, form: NgForm) {
     //Nova variável "cep" somente com dígitos.
     cep = cep.replace(/\D/g, '');
     //Verifica se campo cep possui valor informado.
-    if (cep !== "") {
+    if (cep !== '') {
       //Expressão regular para validar o CEP.
       var validacep = /^[0-9]{8}$/;
 
       //Valida o formato do CEP.
       if (validacep.test(cep)) {
-
         this.resetForm(form);
 
-        this.http.get(`https://viacep.com.br/ws/${cep}/json`)
+        this.http
+          .get(`https://viacep.com.br/ws/${cep}/json`)
           .subscribe((data: any) => this.populaDadosForm(data, form));
       }
     }
   }
 
   populaDadosForm(data: any, formulario: NgForm): void {
-
     /*     formulario.setValue({
           nome: formulario.value.name,
           email: formulario.value.email,
@@ -108,7 +105,6 @@ export class TemplateFormComponent implements OnInit {
   }
 
   resetForm(formulario: NgForm): void {
-
     formulario.form.patchValue({
       endereco: {
         logradouro: null,
@@ -120,6 +116,4 @@ export class TemplateFormComponent implements OnInit {
       },
     });
   }
-
 }
-

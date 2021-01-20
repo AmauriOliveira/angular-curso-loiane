@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { CursosService } from '../cursos/cursos.service';
-
 @Component({
   selector: 'app-criar-curso',
   templateUrl: './criar-curso.component.html',
@@ -9,10 +8,9 @@ import { CursosService } from '../cursos/cursos.service';
   providers: [CursosService],
 })
 export class CriarCursoComponent implements OnInit {
-
   cursos: string[] = [];
 
-  constructor(private cursosService: CursosService) { }
+  constructor(private cursosService: CursosService) {}
 
   ngOnInit(): void {
     this.cursos = this.cursosService.getCursos();

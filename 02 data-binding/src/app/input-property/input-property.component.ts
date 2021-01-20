@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-
 @Component({
   selector: 'app-curso',
   templateUrl: './input-property.component.html',
@@ -7,12 +6,9 @@ import { Component, Input, OnInit } from '@angular/core';
   // inputs: ['nomeCurso:nome'] // não é a convensão
 })
 export class InputPropertyComponent implements OnInit {
-
   @Input('nome') // é a convensão
-  nomeCurso: string = '';// o 'nome' é externo e o 'nomeCurso' é interno
-  constructor() { }
+  nomeCurso: string = ''; // o 'nome' é externo e o 'nomeCurso' é interno
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

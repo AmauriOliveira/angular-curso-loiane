@@ -8,9 +8,9 @@ import { FormArray, FormGroup } from '@angular/forms';
 export abstract class BaseFormComponent implements OnInit {
   formulario: FormGroup = new FormGroup({});
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   abstract submit(): void;
 
@@ -40,7 +40,6 @@ export abstract class BaseFormComponent implements OnInit {
     this.formulario.reset();
   }
 
-
   aplicaCssErro(nomeCampo: string) {
     let campo = this.formulario.get(nomeCampo);
     return {
@@ -55,5 +54,4 @@ export abstract class BaseFormComponent implements OnInit {
     }
     return true;
   }
-
 }

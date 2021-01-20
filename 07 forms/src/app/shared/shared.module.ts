@@ -13,4 +13,4 @@ import { FormsModule } from '@angular/forms';
   exports: [FormDebugComponent, ErrorMsgComponent, InputFieldComponent],
   providers: [DropdownService],
 })
-export class SharedModule { }
+export class SharedModule {}

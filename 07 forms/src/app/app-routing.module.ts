@@ -6,11 +6,11 @@ import { TemplateFormComponent } from './template-form/template-form.component';
 const routes: Routes = [
   { path: 'templateForm', component: TemplateFormComponent },
   { path: 'dataForm', component: DataFormComponent },
-  { path: '', pathMatch: 'full', redirectTo: 'dataForm' }
+  { path: '', pathMatch: 'full', redirectTo: 'dataForm' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

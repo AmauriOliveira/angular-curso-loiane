@@ -9,19 +9,12 @@ import { LogService } from './shared/log.service';
 import { CriarCursoModule } from './criar-curso/criar-curso.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    CursosModule,
-    CriarCursoModule,
-  ],
+  declarations: [AppComponent],
+  imports: [BrowserModule, FormsModule, CursosModule, CriarCursoModule],
   providers: [
     // CursosService,
     LogService,
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

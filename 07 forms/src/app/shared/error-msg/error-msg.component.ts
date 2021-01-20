@@ -10,9 +10,9 @@ export class ErrorMsgComponent implements OnInit {
   @Input() control: any;
   @Input() label: string = '';
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   get errorMessage() {
     for (const propertyName in this.control.errors) {

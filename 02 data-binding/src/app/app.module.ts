@@ -15,14 +15,10 @@ import { CicloComponent } from './ciclo/ciclo.component';
     DataBindingComponent,
     InputPropertyComponent,
     OutputPropertyComponent,
-    CicloComponent
+    CicloComponent,
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    MeuFormModule,
-  ],
+  imports: [BrowserModule, FormsModule, MeuFormModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

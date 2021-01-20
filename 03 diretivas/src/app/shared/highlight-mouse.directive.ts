@@ -3,14 +3,13 @@ import {
   HostListener,
   // ElementRef,
   // Renderer2,
-  HostBinding
+  HostBinding,
 } from '@angular/core';
 
 @Directive({
-  selector: '[highlightMouse]'
+  selector: '[highlightMouse]',
 })
 export class HighlightMouseDirective {
-
   // on mouse over foi nome escolhido por mim*
   // nome mouseenter é padrão
   @HostListener('mouseenter') onMouseOver() {
@@ -27,7 +26,7 @@ export class HighlightMouseDirective {
   // o nome pode ser qulaquer coisa
   //@HostBinding('style.backgroundColor') backgroundColor: string;
 
-    // se precisar manipular algo
+  // se precisar manipular algo
   // o nome pode ser qulaquer coisa
   @HostBinding('style.backgroundColor') get setColor() {
     // qualquer codigo extra
@@ -36,10 +35,7 @@ export class HighlightMouseDirective {
 
   private _backgroundColor: string;
 
-  constructor(
-    // private _elementRef: ElementRef,
-    // private _renderer: Renderer2,
-  ) { }
-
+  constructor() // private _elementRef: ElementRef,
+  // private _renderer: Renderer2,
+  {}
 }
-

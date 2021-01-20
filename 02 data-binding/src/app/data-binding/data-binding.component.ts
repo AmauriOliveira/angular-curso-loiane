@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-data-binding',
   templateUrl: './data-binding.component.html',
-  styleUrls: ['./data-binding.component.css']
+  styleUrls: ['./data-binding.component.css'],
   /* // pela boa pratica nunca deve ter mais de um estilo
      styles: [`
    .highlight {
@@ -13,9 +13,7 @@ import { Component, OnInit } from '@angular/core';
 
    `] */
 })
-
 export class DataBindingComponent implements OnInit {
-
   url: string = 'http://loiane.com';
 
   urlImg: string = 'http://lorempixel.com.br/400/200';
@@ -28,21 +26,20 @@ export class DataBindingComponent implements OnInit {
 
   isMouseOver: boolean = false;
 
-  nomeDoCurso: string = ' Curso de Angular'
+  nomeDoCurso: string = ' Curso de Angular';
 
   valorInicial: number = 10;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   getValor(): number {
     return 1;
   }
 
   botaoClicado(text: string): void {
-    alert(text)
+    alert(text);
   }
 
   getCurtirCurso(): boolean {
@@ -62,6 +59,6 @@ export class DataBindingComponent implements OnInit {
   }
 
   onChangeValue(event) {
-    console.log(event.newValue)
+    console.log(event.newValue);
   }
 }

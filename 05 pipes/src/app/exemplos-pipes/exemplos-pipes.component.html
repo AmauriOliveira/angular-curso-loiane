@@ -1,25 +1,25 @@
 <h5>Exemplos de Pipes</h5>
 <!-- Pipes aninhados o ultimo sobrescreve os progenitores -->
 <p>Título: {{ book.title | uppercase | lowercase | camelCase }}</p>
-<p>Estrela: {{ book.rating | number:'1.1-1' }}</p>
+<p>Estrela: {{ book.rating | number: "1.1-1" }}</p>
 <p>Páginas: {{ book.page | number }}</p>
-<p>Preço: {{ book.price | currency:'BRL':true }}</p>
-<p>Data: {{ book.date | date:'dd/MMM/yyyy' }}</p>
+<p>Preço: {{ book.price | currency: "BRL":true }}</p>
+<p>Data: {{ book.date | date: "dd/MMM/yyyy" }}</p>
 <p>URL: {{ book.url }}</p>
-<br>
+<br />
 <p>Livro: {{ book | json }}</p>
-<br>
-<hr>
+<br />
+<hr />
 
 <input type="text" [(ngModel)]="filtro" />
 
-<br>
-<input type="text" #novoValor>
+<br />
+<input type="text" #novoValor />
 <button (click)="addCurso(novoValor.value)">Add Curso</button>
 
-<br>
+<br />
 <h4>Pipe puro</h4>
-<br>
+<br />
 
 <ul>
   <!-- Filtro de array abaixo é apenas para fim academico.. não utilizar em produção -->
@@ -27,34 +27,34 @@
     {{ livro }}
   </li>
 </ul>
-<br>
-<hr>
+<br />
+<hr />
 
 <h4>Pipe impuro</h4>
-<br>
+<br />
 <ul>
   <!-- Filtro de array abaixo é apenas para fim academico.. não utilizar em produção -->
   <li *ngFor="let livro of livros | filtroArrayImpuro: filtro">
     {{ livro }}
   </li>
 </ul>
-<hr>
+<hr />
 
 <h4>Manaira correta de usar filtero nos porjetos</h4>
-<br>
+<br />
 <ul>
   <li *ngFor="let livro of obterCursos()">
     {{ livro }}
   </li>
 </ul>
-<hr>
+<hr />
 
 <h4>Pipe Async com promise</h4>
-<br>
+<br />
 
 <p>{{ valorAsync | async }}</p>
 
 <h4>Pipe Async com observable</h4>
-<br>
+<br />
 
 <p>{{ valorAsync2 | async }}</p>

@@ -92,9 +92,8 @@ export class DataFormComponent extends BaseFormComponent implements OnInit {
       ?.valueChanges.pipe(
         // tap((estado) => console.log('Novo estado ', estado)),
         map((estado: any) => this.estados.filter((uf) => uf.sigla === estado)),
-        map(
-          (estados: any) =>
-            estados && estados.length > 0 ? estados[0].id : EMPTY
+        map((estados: any) =>
+          estados && estados.length > 0 ? estados[0].id : EMPTY
         ),
         switchMap((estadoId: number) =>
           this.dropdownService.getCidadeBR(estadoId)

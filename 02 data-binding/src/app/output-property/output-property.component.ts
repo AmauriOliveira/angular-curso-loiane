@@ -5,26 +5,23 @@ import {
   Output,
   EventEmitter,
   ViewChild,
-  ElementRef
+  ElementRef,
 } from '@angular/core';
 @Component({
   selector: 'contador',
   templateUrl: './output-property.component.html',
-  styleUrls: ['./output-property.component.css']
+  styleUrls: ['./output-property.component.css'],
 })
 export class OutputPropertyComponent implements OnInit {
-
   @Input()
   valor: number = 0;
 
   @Output()
   valueChange = new EventEmitter();
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
   @ViewChild('campoInput') // tem de ser o mesmo nome da variavel local do template
   campoValorInput: ElementRef;
 
@@ -39,5 +36,4 @@ export class OutputPropertyComponent implements OnInit {
     //this.valor--;
     this.valueChange.emit({ newValue: this.valor });
   }
-
 }

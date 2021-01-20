@@ -7,9 +7,7 @@ import { FiltroArrayPipe } from './filtro-array.pipe';
   pure: false, // por default ele é true e o valor pode ser o,imitido
 })
 export class FiltroArrayImpuroPipe extends FiltroArrayPipe {
-
   transform(value: unknown, ...args: unknown[]): unknown {
     return null;
   }
-
 }

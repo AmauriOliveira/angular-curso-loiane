@@ -3,11 +3,11 @@ import {
   HostListener,
   HostBinding,
   Input,
-  OnInit
+  OnInit,
 } from '@angular/core';
 
 @Directive({
-  selector: '[highlight]'
+  selector: '[highlight]',
 })
 export class HighlightDirective implements OnInit {
   @HostListener('mouseenter') onMouseOver() {
@@ -23,16 +23,13 @@ export class HighlightDirective implements OnInit {
   @Input()
   defaultColor: string = 'white';
 
-// se utilizar no input ele tem efeito.. ver mais na app\diretivas-customizadas\diretivas-customizadas.component.html
+  // se utilizar no input ele tem efeito.. ver mais na app\diretivas-customizadas\diretivas-customizadas.component.html
   @Input('highlight')
   highlightColor: string = 'yellow';
 
-  constructor(
-
-  ) { }
+  constructor() {}
 
   ngOnInit() {
     this.backgroundColor = this.defaultColor;
   }
-
 }

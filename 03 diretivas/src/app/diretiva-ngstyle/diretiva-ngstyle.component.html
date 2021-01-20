@@ -1,20 +1,28 @@
 <h4>Style with property binding (style binding)</h4>
 
-<button (click)="onClick()" [style.backgroundColor]="ativo ? 'blue' : 'gray'" [style.color]="ativo ? 'white' : 'black'"
-  [style.fontWeight]="ativo ? 'bold' : 'normal'" [style.fontSize]="tamanhoFonte +'px'">
+<button
+  (click)="onClick()"
+  [style.backgroundColor]="ativo ? 'blue' : 'gray'"
+  [style.color]="ativo ? 'white' : 'black'"
+  [style.fontWeight]="ativo ? 'bold' : 'normal'"
+  [style.fontSize]="tamanhoFonte + 'px'"
+>
   Mudar aparencia caso ativo
 </button>
-<br>
-<hr>
+<br />
+<hr />
 <input type="text" [(ngModel)]="tamanhoFonte" />
-<hr>
+<hr />
 <h4>Style with property binding (style binding)</h4>
 
-<button (click)="onClick()" [ngStyle]="{
-  'backgroundColor' : ( ativo ? 'blue' : 'gray') ,
-  'color': (ativo ? 'white' : 'black'),
-  'fontWeight': (ativo ? 'bold' : 'normal') ,
-  'fontSize':(tamanhoFonte +'px')}">
-
+<button
+  (click)="onClick()"
+  [ngStyle]="{
+    backgroundColor: ativo ? 'blue' : 'gray',
+    color: ativo ? 'white' : 'black',
+    fontWeight: ativo ? 'bold' : 'normal',
+    fontSize: tamanhoFonte + 'px'
+  }"
+>
   Mudar aparencia caso ativo
 </button>

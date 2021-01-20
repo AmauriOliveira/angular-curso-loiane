@@ -6,10 +6,9 @@ export interface Curso {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CursosService {
-
   getCursos(): Curso[] {
     return [
       { id: 1, nome: 'Angular 2' },
@@ -20,9 +19,9 @@ export class CursosService {
 
   getCurso(id: number): Curso {
     let cursos = this.getCursos();
-    let curso = cursos.filter(curso => curso.id == id)
+    let curso = cursos.filter((curso) => curso.id == id);
     return curso[0];
   }
 
-  constructor() { }
+  constructor() {}
 }
