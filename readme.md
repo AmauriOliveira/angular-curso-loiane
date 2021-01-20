@@ -1,6 +1,6 @@
 # Curso de Angular da Loiane
 
-![banner](https://angular.io/assets/images/logos/angular/angular.svg)
+<img align="center" width="200" src="https://angular.io/assets/images/logos/angular/angular.svg" alt="logo do angular"/>
 
 > Codigo feito durante o curso de Angular da Loiane Groner no portal https://loiane.training/
 
@@ -42,7 +42,7 @@ Nesse repositório será armazenado tudo que eu desenvolver durante o curso da L
 - [x] Formulários / Template Driven
 - [x] Formulários Reativos / data-driven
 - [x] Http
-- [ ] Depuração / Debug
+- [x] Depuração / Debug
 - [ ] Build e Deploy
 
 ## :star2: Contribuindo
