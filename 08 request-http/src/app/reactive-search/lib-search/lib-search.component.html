@@ -23,12 +23,21 @@
       <thead>
         <tr>
           <th>Nome</th>
+          <th>HomePage</th>
           <th>Versão</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let result of results$ | async">
           <td>{{ result.name }}</td>
+          <td>
+            <a
+              [href]="result.homepage"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Link</a
+            >
+          </td>
           <td>{{ result.version }}</td>
         </tr>
       </tbody>
