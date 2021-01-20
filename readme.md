@@ -1,6 +1,6 @@
 # Curso de Angular da Loiane
 
-[banner](https://angular.io/assets/images/logos/angular/angular.svg)
+![banner](https://angular.io/assets/images/logos/angular/angular.svg)
 
 > Codigo feito durante o curso de Angular da Loiane Groner no portal https://loiane.training/
 
