@@ -51,7 +51,7 @@ export class CursosListaComponent implements OnInit {
     );
     // this.service.list()
     // .pipe(
-    //   catchError(error => empty())
+    //   catchError(error => EMPTY)
     // )
     // .subscribe(
     //   dados => {

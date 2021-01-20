@@ -5,7 +5,7 @@ import {
   FormControl,
   Validators,
 } from '@angular/forms';
-import { empty, Observable, pipe } from 'rxjs';
+import { EMPTY, Observable, pipe } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 import { Estado } from '../shared/models/estado';
@@ -80,9 +80,9 @@ export class DataFormComponent extends BaseFormComponent implements OnInit {
         switchMap((status) =>
           status === 'VALID'
             ? this.cepService.consultaCEP(
-              this.formulario.get('endereco.cep')?.value
-            )
-            : empty()
+                this.formulario.get('endereco.cep')?.value
+              )
+            : EMPTY
         )
       )
       .subscribe((dados: any) => (dados ? this.populaDadosForm(dados) : {}));
@@ -91,16 +91,17 @@ export class DataFormComponent extends BaseFormComponent implements OnInit {
       .get('endereco.uf')
       ?.valueChanges.pipe(
         // tap((estado) => console.log('Novo estado ', estado)),
-        map((estado) => this.estados.filter((uf) => uf.sigla === estado)),
-        map((estados) =>
-          estados && estados.length > 0 ? estados[0].id : 0/* empty() */
+        map((estado: any) => this.estados.filter((uf) => uf.sigla === estado)),
+        map(
+          (estados: any) =>
+            estados && estados.length > 0 ? estados[0].id : EMPTY
         ),
         switchMap((estadoId: number) =>
           this.dropdownService.getCidadeBR(estadoId)
-        ),
+        )
         // tap(console.log),
       )
-      .subscribe(cidades => this.cidades = cidades);
+      .subscribe((cidades) => (this.cidades = cidades));
 
     // this.dropdownService.getCidadeBR(8).subscribe(console.log);
 
