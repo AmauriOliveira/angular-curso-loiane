@@ -62,7 +62,7 @@ export class LibSearchComponent implements OnInit {
     params = params.set('search', search);
     params = params.set('fields', this.FIELDS);
 
-    if (search && search.trim() !== '') {
+    if (search?.trim() !== '') {
       search = search.trim();
 
       /*     const params_ = {

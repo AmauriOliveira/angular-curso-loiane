@@ -39,7 +39,7 @@ export class UploadFileComponent implements OnInit, OnDestroy {
   }
 
   onUpload(): void {
-    if (this.files && this.files.size > 0) {
+    if (this.files?.size > 0) {
       this.uploadFileService
         .upload(this.files, `${environment.BASE_URL}/upload`)
         .pipe(

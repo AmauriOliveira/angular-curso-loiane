@@ -29,7 +29,7 @@ export class UploadFileService {
     const blob = new Blob([response], { type: response.type });
 
     // IE
-    if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+    if (window.navigator?.msSaveOrOpenBlob) {
       window.navigator.msSaveOrOpenBlob(blob);
       return;
     }

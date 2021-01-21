@@ -18,7 +18,7 @@ export class CursoResolverGuard implements Resolve<Curso> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<Curso> {
-    if (route.params && route.params['id']) {
+    if (route.params?.id) {
       return this.cursoService.loadCursoById(route.params['id']);
     }
 
