@@ -35,7 +35,7 @@ npm i -g json-server
 > run
 
 ```bash
-json-server --watch db.json
+json-server --watch db.json -p 3333
 ```
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
