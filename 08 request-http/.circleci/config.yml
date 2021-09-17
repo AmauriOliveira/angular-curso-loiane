@@ -1,55 +1,98 @@
 version: 2.1
 
+references:
+  filter_only_qa: &filter_only_qa
+    filters:
+      branches:
+        only:
+          - qa
+
+  filter_only_main: &filter_only_main
+    filters:
+      branches:
+        only:
+          - main
+
+  filter_only_dev: &filter_only_dev
+    filters:
+      branches:
+        only:
+          - dev
+
+commands:
+  checkout_and_install:
+    description: "Checkout + install"
+    steps:
+      - checkout
+      - restore_cache:
+          key: v1-dependencies-{{ checksum "yarn.lock" }}
+      - run: yarn install
+      - save_cache:
+          key: v1-dependencies-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+
+  store_tar:
+    parameters:
+      path:
+        type: string
+      dest:
+        type: string
+    steps:
+      - run: tar -cf <<parameters.dest>> <<parameters.path>>
+      - store_artifacts:
+          path: <<parameters.dest>>
+
 jobs:
   build:
     docker:
       - image: circleci/node:10
     working_directory: ~/repo
     steps:
-      - checkout
-      - restore_cache:
-          key: v1-dependencies-{{ checksum "yarn.lock" }}
-      - run: yarn install
-      - save_cache:
-          key: v1-dependencies-{{ checksum "yarn.lock" }}
-          paths:
-            - node_modules
+      - checkout_and_install
       - run: yarn build -progress false
-      - run: tar -cf dist.tar dist
       - persist_to_workspace:
         root:
         paths:
           - dist
-      - store_artifacts:
-          path: ~/repo/dist.tar
+      - store_tar:
+          path: dist/request-http
+          dest: ~/repo/dist.tar
 
   test-lint:
     docker:
       - image: circleci/node:10
     working_directory: ~/repo
     steps:
-      - checkout
-      - restore_cache:
-          key: v1-dependencies-{{ checksum "yarn.lock" }}
-      - run: yarn install
-      - save_cache:
-          key: v1-dependencies-{{ checksum "yarn.lock" }}
-          paths:
-            - node_modules
+      - checkout_and_install
       - run: mkdir -p lint-report/lint
-      - run: yarn lint --format junit -o lint-report/lint/tslint.xml
+      - run: yarn lint --format junit -o lint-report/lint/lint.xml
       - store_test_results:
           path: lint-report
-
+      - store_tar:
+          path: lint-report/lint
+          dest: ~/repo/report-lint.tar
 
   deploy
+    parameters:
+      env:
+        type: enum
+        enum: [ 'dev', 'qa', 'prod' ]
+      distribution_id:
+        type: string
+        default: ''
     docker:
        - image: circleci/node:10
     working_directory: ~/repo
     steps:
       - attach_workspace:
          at: .
-      -  run: ls -al ./dist
+      - run: ls -al ./dist
+      - run: echo "Aqui vão os comandos para deploy do seu sistema em <<parameters.env>>"
+      - when:
+          condition: <<parameters.distribution_id>>
+          steps:
+             - run: echo "Apaga a distribution <<parameters.distribution_id>>"
 
 workflows:
   version: 2
@@ -59,22 +102,22 @@ workflows:
       - build:
         requires:
           - test-lint
-      - hold:
-        type: approval
+        - deploy:
+        <<: *filter_only_dev
+        name: deploy-dev
+        env: dev
         requires:
           - build
-        filters:
-          branches:
-            only:
-              - master
-              - dev
-
-      - deploy:
+        - deploy:
+        <<: *filter_only_main
+        name: deploy-prod
+        env: prod
+        distribution_id: 'Um certo ID aqui'
         requires:
-          - hold
-        filters:
-          branches:
-            only:
-              - master
-              - dev
-
+          - build
+        - deploy:
+        <<: *filter_only_qa
+        name: deploy-qa
+        env: qa
+        requires:
+          - build

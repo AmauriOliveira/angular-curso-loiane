@@ -28,7 +28,7 @@ export class OutputPropertyComponent implements OnInit {
   increment(): void {
     this.campoValorInput.nativeElement.value++;
     //this.valor++;
-    this.valueChange.emit({ newValue: this.valor });
+    this.valueChange({ newValue: this.valor });
   }
 
   decrement(): void {
