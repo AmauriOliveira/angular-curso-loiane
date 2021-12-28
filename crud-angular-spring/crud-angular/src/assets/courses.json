@@ -1,0 +1,6 @@
+[
+  { "_id": "1", "name": "Angular", "category": "front" },
+  { "_id": "2", "name": "NodeJs", "category": "back" },
+  { "_id": "3", "name": "React", "category": "front" },
+  { "_id": "4", "name": "Vue", "category": "front" }
+]
