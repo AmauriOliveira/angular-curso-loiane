@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { delay, first } from 'rxjs/operators';
+import { first } from 'rxjs/operators';
 
 import { Course } from '../model/course';
 
@@ -13,6 +13,10 @@ export class CoursesService {
   constructor(private httpClient: HttpClient) {}
 
   list(): Observable<Course[]> {
-    return this.httpClient.get<Course[]>(this.API).pipe(first(), delay(2000));
+    return this.httpClient.get<Course[]>(this.API).pipe(first());
+  }
+
+  save(course: Course): Observable<Course> {
+    return this.httpClient.post<Course>(this.API, course).pipe(first());
   }
 }

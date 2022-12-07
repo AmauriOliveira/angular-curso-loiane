@@ -11,8 +11,11 @@
       </mat-form-field>
       <mat-form-field class="full-width">
         <mat-label>Categoria</mat-label>
-        <input matInput placeholder="Categoria" formControlName="category" />
-        <mat-hint align="end">Max 10 caracteres</mat-hint>
+        <mat-select formControlName="category">
+          <mat-option *ngFor="let category of categories" [value]="category">
+            {{ category }}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
     </form>
   </mat-card-content>
