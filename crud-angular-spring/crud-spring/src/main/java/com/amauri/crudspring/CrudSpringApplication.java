@@ -22,7 +22,7 @@ public class CrudSpringApplication {
 
 			Course course = new Course();
 			course.setName("Spring Boot");
-			course.setCategory("Backend");
+			course.setCategory("back-end");
 
 			courseRepository.save(course);
 		};
