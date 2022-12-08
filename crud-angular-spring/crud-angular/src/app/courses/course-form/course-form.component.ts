@@ -3,8 +3,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { CoursesService } from '../services/courses.service';
-import { catchError } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-course-form',
@@ -13,11 +14,12 @@ import { of } from 'rxjs';
 })
 export class CourseFormComponent implements OnInit {
   form: FormGroup;
-  categories = [null, 'Front-End', 'Back-End', 'Full-Stack'];
+  categories = [null, 'front-end', 'back-end', 'full-stack'];
 
   constructor(
     private coursesService: CoursesService,
     private formBuilder: FormBuilder,
+    private location: Location,
     private snackBar: MatSnackBar
   ) {
     this.form = this.formBuilder.group({
@@ -34,6 +36,14 @@ export class CourseFormComponent implements OnInit {
     this.coursesService
       .save(this.form.value)
       .pipe(
+        tap(() => {
+          this.snackBar.open('Curso salvo com sucesso.', 'Fechar', {
+            duration: 5000,
+          });
+
+          this.location.back();
+        }
+        ),
         catchError(() => {
           this.snackBar.open('Falha ao salvar o curso.', 'Fechar', {
             duration: 5000,
@@ -46,6 +56,6 @@ export class CourseFormComponent implements OnInit {
   }
 
   onCancel(): void {
-    console.log('cancel');
+    this.location.back();
   }
 }
